@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Home - Brad's Bees{% endblock %}</title>
+    {% block css %}
+        <link rel="stylesheet" href="{% static 'index.css' %}">
+    {% endblock %}  
+</head>
+<body>
+    <header>
+        <h1>Welcome to Brad's Bees</h1>
+    </header>
+    <main>
+        {% block content %}
+        <p>This is the home page. Replace this with your content.</p>
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2026 Brad's Bees</p>
+    </footer>
+</body>
+</html>
