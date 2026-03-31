@@ -1,35 +1,38 @@
 from django.shortcuts import render
+import app.forms
+import app.models
+
 
 # Create your views here.
 def admin_home(request):
-    return render("admin_home.html")
+    return render(request, "admin_home.html")
 
 
 
 def bee_removal(request):
-    return render("bee_removal.html")
+    return render(request, "bee_removal.html")
 
 
 
 def render_ed_page(request):
-    return render("educational.html")
+    return render(request, "educational.html")
 
 
 
 def render_gallery(request):
-    return render("gallery.html")
+    return render(request, "gallery.html")
 
 
 
 def render_home_page(request):
-    return render("home.html")
+    return render(request, "home.html")
 
 
 
 def render_index(request):
-    return render("index.html")
+    return render(request, "index.html")
 
 
 
 def shop(request):
-    return render("shop.html")
+    return render(request, "shop.html")

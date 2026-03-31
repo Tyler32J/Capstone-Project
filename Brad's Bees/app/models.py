@@ -7,6 +7,7 @@ class Product(models.Model):
     variant = models.CharField(max_length=20, blank=True, null=True)
     description = models.TextField()
     price = models.DecimalField()
+    stock = models.PositiveIntegerField()
     is_acive = models.BooleanField(default=True)
 
 
