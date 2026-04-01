@@ -8,15 +8,11 @@ def admin_home(request):
     return render(request, "admin_home.html")
 
 
-
 def bee_removal(request):
     return render(request, "bee_removal.html")
 
-
-
 def render_ed_page(request):
     return render(request, "educational.html")
-
 
 
 def render_gallery(request):
@@ -31,7 +27,6 @@ def render_home_page(request):
 
 def render_index(request):
     return render(request, "index.html")
-
 
 
 def shop(request):
