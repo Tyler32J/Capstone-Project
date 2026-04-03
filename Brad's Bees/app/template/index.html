@@ -1,26 +1,60 @@
 {% load static %}
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Home - Brad's Bees{% endblock %}</title>
-    {% block css %}
-        <link rel="stylesheet" href="{% static 'index.css' %}">
-    {% endblock %}  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Brad's Bees{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+    {% block css %}{% endblock %}
 </head>
 <body>
     <header>
-        <h1>Welcome to Brad's Bees</h1>
+        <h1>Brad's Bees</h1>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'services' %}">Services</a></li>
+                <li><a href="{% url 'shop' %}">Shop</a></li>
+                <li><a href="{% url 'education' %}">Education</a></li>
+                <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+            </ul>
+        </nav>
+        <a class="call-now" href="tel:+985-612-0241">Call Now</a>
     </header>
+
     <main>
-        {% block content %}
-        <p>This is the home page. Replace this with your content.</p>
-        {% endblock %}
+        {% block content %}{% endblock %}
     </main>
-    <footer>
-        <p>&copy; 2026 Brad's Bees</p>
-        <p>Hello</p>
-    </footer>
+<footer>
+    <div>
+        <h3>Brad's Bees</h3>
+        <p>Professional bee removal services and premium honey sales.</p>
+        <p>Protecting people and pollinators since 2018.</p>
+    </div>
+
+    <div>
+        <h4>Quick Links</h4>
+        <p>Home</p>
+        <p>Services</p>
+        <p>Shop</p>
+        <p>Education</p>
+        <p>Gallery</p>
+        <p>Contact</p>
+    </div>
+
+    <div>
+        <h4>Get In Touch</h4>
+        <p>Email: bradbessetti@gmail.com</p>
+        <p>Phone: 985-612-0241</p>
+        <p>Location: Sun, LA 70463</p>
+
+        <h4>Community Links</h4>
+        <p>Hives for Heroes</p>
+    </div>
+
+    <p>&copy; 2026 Brad's Bees. All rights reserved.</p>
+</footer>
 </body>
 </html>
