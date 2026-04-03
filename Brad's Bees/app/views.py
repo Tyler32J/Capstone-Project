@@ -19,7 +19,6 @@ def render_gallery(request):
     return render(request, "gallery.html")
 
 
-
 def render_home_page(request):
     return render(request, "home.html")
 
@@ -27,7 +26,3 @@ def render_home_page(request):
 
 def render_index(request):
     return render(request, "index.html")
-
-
-def shop(request):
-    return render(request, "shop.html")
