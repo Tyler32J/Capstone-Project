@@ -11,5 +11,12 @@
 <section>
     <h2>Contact Us</h2>
     <p>Call us any time for bee removal or service questions.</p>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+
 </section>
 {% endblock %}
