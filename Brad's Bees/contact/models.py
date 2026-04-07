@@ -17,14 +17,14 @@ class Submission(models.Model):
     ]
 
     name = models.CharField(max_length=50)
-    email = models.EmailField()
-    phone = models.CharField()
+    email = models.EmailField(max_length=50)
+    phone = models.CharField(max_length=12)
     service = models.CharField(
         max_length=20,
         choices=SERVICE_CHOICES,
         default="bee_removal"
     )
-    message = models.TextField()
+    message = models.TextField(max_length=999)
     
 
 
