@@ -3,9 +3,210 @@
 
 {% block title %}Home - Brad's Bees{% endblock %}
 
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'home.css' %}">
+{% endblock %}
+
 {% block content %}
-<section>
-    <h2>Welcome to Brad's Bees</h2>
-    <p>Safe bee removal, hive relocation, and local honey products.</p>
+<section class="hero-section">
+  <div class="container py-16">
+    <div class="hero-grid">
+      <div>
+        <h1 class="hero-title">Safe Bee Removal & Premium Honey</h1>
+        <p class="hero-subtitle">
+          Professional bee removal services and locally sourced, organic honey that brings nature's sweetness to your home.
+        </p>
+
+        <div class="stats-grid">
+          <div class="stat-box">
+            <div class="stat-number">Treatmeant Free</div>
+          </div>
+          <div class="stat-box stat-box-centered">
+            <div>
+              <div class="stat-number">Insured</div>
+            </div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">Local Business</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="logo-container">
+        <img src="{% static 'images/Brads_bee.png' %}" alt="Brad's Bees logo" class="logo-svg">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about-section">
+  <div class="container about-container">
+    <h2 class="section-title">My Story</h2>
+    <div class="about-grid">
+      <div class="about-image-wrapper">
+        <img src="{% static 'images/brad_.jpg' %}" alt="Brad working with bees" class="about-image">
+      </div>
+
+      <div class="about-text">
+        <p>Hi, I'm Brad, and I've been working with bees for over 15 years. What started as a childhood fascination with these incredible creatures turned into a lifelong passion and career.</p>
+        <p>I founded Brad's Bees to provide safe, humane bee removal services while also sharing the amazing benefits of pure, raw honey with the community. Every hive I work with teaches me something new about these remarkable pollinators.</p>
+        <p>When I'm not removing bees from unwanted locations or harvesting honey, I'm educating others about the vital role bees play in our ecosystem. It's more than just a job-it's my mission to protect both people and pollinators.</p>
+        <p>Whether you need emergency bee removal or want to enjoy the finest local honey, I'm here to help with expertise, care, and a commitment to doing things right.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services-section">
+  <div class="container">
+    <h2 class="section-title">Our Services</h2>
+    <div class="services-grid grid-cols-3">
+      <a href="{% url 'services' %}" class="service-card">
+        <img src="{% static 'images/service-icon-1.png' %}" alt="Bee removal" class="service-icon">
+        <h3 class="service-title">Bee Removal</h3>
+        <p class="service-description">Safe, professional removal from homes and businesses.</p>
+      </a>
+
+      <a href="{% url 'services' %}" class="service-card">
+        <img src="{% static 'images/service-icon-2.png' %}" alt="Hive relocation" class="service-icon">
+        <h3 class="service-title">Hive Relocation</h3>
+        <p class="service-description">We relocate bees instead of exterminating them.</p>
+      </a>
+
+      <a href="{% url 'education' %}" class="service-card">
+        <img src="{% static 'images/service-icon-3.png' %}" alt="Bee education" class="service-icon">
+        <h3 class="service-title">Education</h3>
+        <p class="service-description">Learn how to protect bees and support pollinators.</p>
+      </a>
+
+      <a href="{% url 'shop' %}" class="service-card">
+        <img src="{% static 'images/service-icon-4.png' %}" alt="Honey products" class="service-icon">
+        <h3 class="service-title">Shop</h3>
+        <p class="service-description">Browse honey and bee-related products.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="reviews-section">
+  <div class="container">
+    <h2 class="reviews-title">What Customers Say</h2>
+    <p class="reviews-subtitle">Don't just take our word for it - hear from our satisfied customers</p>
+
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="review-text">Brad came out quickly and safely removed the hive from our home. He was professional, kind, and very knowledgeable.</p>
+        <div class="review-author">
+          <div class="review-avatar">SM</div>
+          <div>
+            <p class="review-author-name">Sarah M.</p>
+            <p class="review-author-location">Homeowner</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="review-text">Excellent service from start to finish. Brad explained everything and handled the bees with care.</p>
+        <div class="review-author">
+          <div class="review-avatar">JT</div>
+          <div>
+            <p class="review-author-name">James T.</p>
+            <p class="review-author-location">Business Owner</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="review-text">We learned so much about bees and feel much better knowing they were relocated safely.</p>
+        <div class="review-author">
+          <div class="review-avatar">ER</div>
+          <div>
+            <p class="review-author-name">Emily R.</p>
+            <p class="review-author-location">Parent</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section">
+  <div class="container contact-container">
+    <h2 class="contact-title">Get In Touch</h2>
+    <p class="contact-subtitle">Need help with a bee issue? Contact us today.</p>
+
+    <div class="contact-grid">
+      <div class="contact-form-wrapper">
+        <h3 class="contact-form-title">Send Us a Message</h3>
+        <form method="post" action="{% url 'contact' %}">
+          {% csrf_token %}
+          <div class="form-group">
+            <label class="form-label" for="name">Name</label>
+            <input class="form-input" type="text" id="name" name="name" placeholder="Your name">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="email">Email</label>
+            <input class="form-input" type="email" id="email" name="email" placeholder="Your email">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="message">Message</label>
+            <textarea class="form-textarea" id="message" name="message" rows="5" placeholder="Tell us what you need"></textarea>
+          </div>
+
+          <button type="submit" class="submit-button">Send Message</button>
+        </form>
+      </div>
+
+      <div class="contact-info-wrapper">
+        <div class="contact-image-wrapper">
+          <img src="{% static 'images/honey_preview.png' %}" alt="Honey and bee products" class="contact-image">
+        </div>
+
+        <div class="contact-info-list">
+          <div class="contact-info-item">
+            <div class="contact-icon-wrapper">
+              <span class="contact-icon">📞</span>
+            </div>
+            <div>
+              <p class="contact-info-text">985-612-0241</p>
+              <p class="contact-info-subtext">Call us anytime</p>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-icon-wrapper">
+              <span class="contact-icon">✉️</span>
+            </div>
+            <div>
+              <p class="contact-info-text">bradbessetti@gmail.com</p>
+              <p class="contact-info-subtext">Email us for questions</p>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-icon-wrapper">
+              <span class="contact-icon">📍</span>
+            </div>
+            <div>
+              <p class="contact-info-text">Sun, LA 70463</p>
+              <p class="contact-info-subtext">Serving local areas</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 {% endblock %}
