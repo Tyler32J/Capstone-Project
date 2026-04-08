@@ -1,14 +1,15 @@
 from django.db import models
 from app.models import *
 
-# Create your models here.
 
 class Product(models.Model):
     name = models.CharField(max_length=30)
     variant = models.CharField(max_length=20, null=True, blank=True)
     description = models.CharField(max_length=999)
-    price = models.DecimalField(max_digits=9, decimal_places=2)
+    price = models.DecimalField(max_digits=9, decimal_places=2, null=True, blank=True)
     stock = models.PositiveIntegerField()
+    image = models.ImageField(upload_to='products/', null=True, blank=True)
+    rating = models.FloatField(default=5.0)
 
     def __str__(self):
         if self.variant:

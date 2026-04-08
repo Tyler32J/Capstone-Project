@@ -1,0 +1,87 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}Shopping Cart - Brad's Bees{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'shop.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="cart-section">
+    <div class="cart-container">
+        <h1>Shopping Cart</h1>
+        
+        {% if cart_items %}
+        <div class="cart-content">
+            <div class="cart-table-wrapper">
+                <table class="cart-table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in cart_items %}
+                        <tr>
+                            <td class="product-cell">
+                                {% if item.image %}
+                                <img src="{{ item.image }}" alt="{{ item.name }}" class="cart-product-image">
+                                {% else %}
+                                <div class="no-image">No Image</div>
+                                {% endif %}
+                                <div>
+                                    <strong>{{ item.name }}</strong>
+                                    {% if item.variant %}<span class="variant"> ({{ item.variant }})</span>{% endif %}
+                                </div>
+                            </td>
+                            <td>${{ item.price|floatformat:2 }}</td>
+                            <td>
+                                <form method="POST" action="{% url 'update_cart' item.id %}" class="quantity-form">
+                                    {% csrf_token %}
+                                    <input type="number" name="quantity" value="{{ item.quantity }}" min="1" max="100">
+                                    <button type="submit" class="update-btn">Update</button>
+                                </form>
+                            </td>
+                            <td>${{ item.total|floatformat:2 }}</td>
+                            <td><a href="{% url 'remove_from_cart' item.id %}" class="remove-btn">Remove</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="order-summary">
+                <h2>Order Summary</h2>
+                <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <span>${{ subtotal }}</span>
+                </div>
+                <div class="summary-row">
+                    <span>Shipping:</span>
+                    <span>${{ shipping }}</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total:</span>
+                    <span>${{ total }}</span>
+                </div>
+                <button class="checkout-btn">Proceed to Checkout</button>
+            </div>
+        </div>
+        {% else %}
+        <div class="empty-cart">
+            <p>Your cart is empty</p>
+            <a href="{% url 'shop' %}" class="shop-link">Continue Shopping</a>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Floating Back to Shop Button -->
+<a href="{% url 'shop' %}" class="floating-back-btn">← Back to Shop</a>
+
+{% endblock %}
