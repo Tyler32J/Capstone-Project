@@ -8,9 +8,13 @@
 {% endblock %}
 
 {% block content %}
+<!-- ======================================================
+     Home Page: Hero Section
+     ====================================================== -->
 <section class="hero-section">
   <div class="container py-16">
     <div class="hero-grid">
+      <!-- Hero copy and stats -->
       <div>
         <h1 class="hero-title">Safe Bee Removal &amp; Premium Honey</h1>
         <p class="hero-subtitle">
@@ -34,6 +38,7 @@
         </div>
       </div>
 
+      <!-- Hero logo -->
       <div class="logo-container">
         <img src='{% static "images/Brad_New_Logo.png" %}' alt="Brad's Bees logo" class="logo-svg">
       </div>
@@ -41,14 +46,19 @@
   </div>
 </section>
 
+<!-- ======================================================
+     Home Page: About / Story Section
+     ====================================================== -->
 <section class="about-section">
   <div class="container about-container">
     <h2 class="section-title">My Story</h2>
     <div class="about-grid">
+      <!-- About image -->
       <div class="about-image-wrapper">
         <img src="{% static 'images/brad.png' %}" alt="Brad working with bees" class="about-image">
       </div>
 
+      <!-- About copy -->
       <div class="about-text">
         <p>Hi, I'm Brad, and I've been working with bees for over 15 years. What started as a childhood fascination with these incredible creatures turned into a lifelong passion and career.</p>
         <p>I founded Brad's Bees to provide safe, humane bee removal services while also sharing the amazing benefits of pure, raw honey with the community. Every hive I work with teaches me something new about these remarkable pollinators.</p>
@@ -59,6 +69,9 @@
   </div>
 </section>
 
+<!-- ======================================================
+     Home Page: Services Quick Access Section
+     ====================================================== -->
 <section class="services-section">
   <div class="container">
     <div class="services-grid">
@@ -85,12 +98,16 @@
   </div>
 </section>
 
+<!-- ======================================================
+     Home Page: Customer Reviews Section
+     ====================================================== -->
 <section class="reviews-section">
   <div class="container">
     <h2 class="reviews-title">What Our Customers Say</h2>
     <p class="reviews-subtitle">Don't just take our word for it - hear from our satisfied customers</p>
 
     <div class="reviews-grid">
+      <!-- Review Card 1 -->
       <div class="review-card">
         <div class="review-stars">
           <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
@@ -105,6 +122,7 @@
         </div>
       </div>
 
+      <!-- Review Card 2 -->
       <div class="review-card">
         <div class="review-stars">
           <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
@@ -119,6 +137,7 @@
         </div>
       </div>
 
+      <!-- Review Card 3 -->
       <div class="review-card">
         <div class="review-stars">
           <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
@@ -136,12 +155,16 @@
   </div>
 </section>
 
+<!-- ======================================================
+     Home Page: Contact Section
+     ====================================================== -->
 <section class="contact-section">
   <div class="container contact-container">
     <h2 class="contact-title">Get in Touch</h2>
     <p class="contact-subtitle">Need bee removal service or have questions about our honey products?<br>Contact us today!</p>
 
     <div class="contact-grid">
+      <!-- Contact form -->
       <div class="contact-form-wrapper">
         <h3 class="contact-form-title">Send Us a Message</h3>
         <form method="post" action="{% url 'contact' %}">
@@ -181,6 +204,7 @@
         </form>
       </div>
 
+      <!-- Contact info cards -->
       <div class="contact-info-wrapper">
         <div class="contact-image-wrapper">
           <img src="{% static 'images/honey_preview.png' %}" alt="Honey and bee products" class="contact-image">

@@ -2,21 +2,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- ======================================================
+       Document Meta
+       ====================================================== -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ======================================================
+       Document Title (overridable in child templates)
+       ====================================================== -->
   <title>{% block title %}Brad's Bees{% endblock %}</title>
+
+  <!-- ======================================================
+       Global Styles + Optional Page-Specific Styles
+       ====================================================== -->
   <link rel="stylesheet" href="{% static 'index.css' %}">
   {% block css %}{% endblock %}
 </head>
 <body>
+  <!-- ======================================================
+       Site Header
+       ====================================================== -->
   <header class="site-header">
     <div class="header-inner">
+      <!-- Brand / Logo -->
       <a href="{% url 'home' %}" class="brand">
-        <img src='{% static "images/Brad_New_Logo.png" %}' alt="Brad's Bees logo" class="brand-logo">
+        <img src='{% static "images/Brads_New_logo_2.png" %}' alt="Brad's Bees logo" class="brand-logo">
         <span class="brand-name">Brad's Bees</span>
       </a>
 
-      <nav class="main-nav">
+      <!-- Primary Navigation -->
+      <nav class="main-nav" aria-label="Main navigation">
         <ul>
           <li><a href="{% url 'home' %}">Home</a></li>
           <li><a href="{% url 'services' %}">Services</a></li>
@@ -27,24 +43,33 @@
         </ul>
       </nav>
 
+      <!-- Primary Call-To-Action -->
       <a class="call-now" href="tel:+985-612-0241">Call Now</a>
     </div>
   </header>
 
+  <!-- ======================================================
+       Main Content (injected by child templates)
+       ====================================================== -->
   <main>
     {% block content %}{% endblock %}
   </main>
 
+  <!-- ======================================================
+       Site Footer
+       ====================================================== -->
   <footer>
+    <!-- Footer: Brand Summary -->
     <div>
       <div class="footer-brand-row">
-        <img src='{% static "images/Brad_New_Logo.png" %}' alt="Brad's Bees logo" class="footer-logo">
+        <img src='{% static "images/Brads_New_logo_2.png" %}' alt="Brad's Bees logo" class="footer-logo">
         <h3>Brad's Bees</h3>
       </div>
       <p>Professional bee removal services and premium honey sales.</p>
       <p>Protecting people and pollinators since 2018.</p>
     </div>
 
+    <!-- Footer: Quick Links -->
     <div>
       <h4>Quick Links</h4>
       <p>Home</p>
@@ -55,6 +80,7 @@
       <p>Contact</p>
     </div>
 
+    <!-- Footer: Contact + Community -->
     <div>
       <h4>Get In Touch</h4>
 
@@ -87,6 +113,7 @@
       <p>Hives for Heroes</p>
     </div>
 
+    <!-- Footer: Copyright -->
     <p>&copy; 2026 Brad's Bees. All rights reserved.</p>
   </footer>
 </body>
