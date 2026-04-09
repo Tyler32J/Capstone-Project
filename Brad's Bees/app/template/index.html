@@ -2,59 +2,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Brad's Bees{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'index.css' %}">
-    {% block css %}{% endblock %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Brad's Bees{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'index.css' %}">
+  {% block css %}{% endblock %}
 </head>
 <body>
-    <header>
-        <h1>Brad's Bees</h1>
-        <nav class="main-nav">
-            <ul>
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'services' %}">Services</a></li>
-                <li><a href="{% url 'shop' %}">Shop</a></li>
-                <li><a href="{% url 'education' %}">Education</a></li>
-                <li><a href="{% url 'gallery' %}">Gallery</a></li>
-                <li><a href="{% url 'contact' %}">Contact</a></li>
-            </ul>
-        </nav>
-        <a class="call-now" href="tel:+985-612-0241">Call Now</a>
-    </header>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="{% url 'home' %}" class="brand">
+        <img src='{% static "images/Brad_New_Logo.png" %}' alt="Brad's Bees logo" class="brand-logo">
+        <span class="brand-name">Brad's Bees</span>
+      </a>
 
-    <main>
-        {% block content %}{% endblock %}
-    </main>
-<footer>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'services' %}">Services</a></li>
+          <li><a href="{% url 'shop' %}">Shop</a></li>
+          <li><a href="{% url 'education' %}">Education</a></li>
+          <li><a href="{% url 'gallery' %}">Gallery</a></li>
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a class="call-now" href="tel:+985-612-0241">Call Now</a>
+    </div>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
     <div>
+      <div class="footer-brand-row">
+        <img src='{% static "images/Brad_New_Logo.png" %}' alt="Brad's Bees logo" class="footer-logo">
         <h3>Brad's Bees</h3>
-        <p>Professional bee removal services and premium honey sales.</p>
-        <p>Protecting people and pollinators since 2018.</p>
+      </div>
+      <p>Professional bee removal services and premium honey sales.</p>
+      <p>Protecting people and pollinators since 2018.</p>
     </div>
 
     <div>
-        <h4>Quick Links</h4>
-        <p>Home</p>
-        <p>Services</p>
-        <p>Shop</p>
-        <p>Education</p>
-        <p>Gallery</p>
-        <p>Contact</p>
+      <h4>Quick Links</h4>
+      <p>Home</p>
+      <p>Services</p>
+      <p>Shop</p>
+      <p>Education</p>
+      <p>Gallery</p>
+      <p>Contact</p>
     </div>
 
     <div>
-        <h4>Get In Touch</h4>
-        <p>Email: bradbessetti@gmail.com</p>
-        <p>Phone: 985-612-0241</p>
-        <p>Location: Sun, LA 70463</p>
+      <h4>Get In Touch</h4>
 
-        <h4>Community Links</h4>
-        <p>Hives for Heroes</p>
+      <div class="footer-contact-list">
+        <div class="footer-contact-row">
+          <svg class="footer-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+            <path d="M3 7l9 6 9-6"></path>
+          </svg>
+          <span>bradbessetti@gmail.com</span>
+        </div>
+
+        <div class="footer-contact-row">
+          <svg class="footer-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.4 2.1L8 9.8a16 16 0 0 0 6.2 6.2l1.4-1.3a2 2 0 0 1 2.1-.4c.8.3 1.7.6 2.6.7A2 2 0 0 1 22 16.9z"></path>
+          </svg>
+          <span>985-612-0241</span>
+        </div>
+
+        <div class="footer-contact-row">
+          <svg class="footer-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M12 21s7-5.7 7-11a7 7 0 1 0-14 0c0 5.3 7 11 7 11z"></path>
+            <circle cx="12" cy="10" r="2.5"></circle>
+          </svg>
+          <span>Sun, LA 70463</span>
+        </div>
+      </div>
+
+      <h4 class="footer-community-title">Community Links</h4>
+      <p>Hives for Heroes</p>
     </div>
 
     <p>&copy; 2026 Brad's Bees. All rights reserved.</p>
-</footer>
+  </footer>
 </body>
 </html>
