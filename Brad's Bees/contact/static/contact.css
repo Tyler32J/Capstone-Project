@@ -113,17 +113,12 @@
   transform: translateY(1px);
 }
 
-/* #id_images {
-  padding: 55px;
+.error-list {
   color: red;
-  background-color: blue;
+  /* more stuff if needed */
 }
 
-#id_images::file-selector-button {
-  border: none;
-  background-color: yellow;
-  color: red;
-} */
+
 
 @media (max-width: 640px) {
   .contact-section {

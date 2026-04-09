@@ -18,21 +18,53 @@
             <div class="form-group">
                 {{ form.name.label_tag }}
                 {{ form.name }}
+
+                {% if form.name.errors %}
+                    <ul class = "error-list">
+                        {% for error in form.name.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
             </div>
 
             <div class="form-group">
                 {{ form.email.label_tag }}
                 {{ form.email }}
+
+                {% if form.email.errors %}
+                    <ul class = "error-list">
+                        {% for error in form.email.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
             </div>
 
             <div class="form-group">
                 {{ form.message.label_tag }}
                 {{ form.message }}
+
+                {% if form.message.errors %}
+                    <ul class = "error-list">
+                        {% for error in form.message.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
             </div>
 
             <div class="form-group">
                 {{ form.images.label_tag }}
                 {{ form.images }}
+
+                {% if form.images.errors %}
+                    <ul class = "error-list">
+                        {% for error in form.images.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
             </div>
             <button class="submit-button" type="submit">Submit</button>
         </form>
