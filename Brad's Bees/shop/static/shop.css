@@ -1,3 +1,22 @@
+/* Back to Cart Button (styled like floating-back-btn but static) */
+.back-to-cart-btn {
+    display: inline-block;
+    background-color: var(--gold);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    font-weight: bold;
+    margin-top: 18px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.back-to-cart-btn:hover {
+    background-color: var(--dark-gold);
+    transform: translateX(-5px);
+}
 /* Shop Page Styling */
 
 :root {
@@ -458,8 +477,8 @@
 }
 
 .checkout-btn {
-    width: 100%;
-    padding: 12px;
+    min-width: 220px;
+    padding: 12px 32px;
     background-color: var(--gold);
     color: white;
     border: none;
@@ -467,8 +486,23 @@
     cursor: pointer;
     font-weight: bold;
     font-size: 1em;
-    margin-top: 15px;
+    margin-top: 10px;
     transition: background-color 0.3s;
+    display: inline-block;
+}
+
+.checkout-btn-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 80px;
+    margin-top: 15px;
+}
+
+.checkout-divider {
+    border: none;
+    border-top: 2px solid var(--border);
+    margin: 18px 0 0 0;
 }
 
 .checkout-btn:hover {

@@ -1,0 +1,35 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}Checkout - Brad's Bees{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'shop.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="checkout-section">
+    <div class="checkout-container">
+        <h1>Checkout</h1>
+        <div class="order-summary">
+            <h2>Order Summary</h2>
+            <div class="summary-row">
+                <span>Subtotal:</span>
+                <span>${{ subtotal }}</span>
+            </div>
+            <div class="summary-row">
+                <span>Shipping:</span>
+                <span>${{ shipping }}</span>
+            </div>
+            <div class="summary-row total">
+                <span>Total:</span>
+                <span>${{ total }}</span>
+            </div>
+        </div>
+        <div class="checkout-actions">
+            <p>This is a placeholder checkout page. Implement payment and address forms here.</p>
+            <a href="{% url 'cart' %}" class="back-to-cart-btn">← Back to Cart</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -103,3 +103,21 @@ def update_cart(request, product_id):
             request.session.modified = True
     
     return redirect('cart')
+
+# --- Checkout View ---
+def checkout_view(request):
+    """Display the checkout page."""
+    cart = request.session.get('cart', {})
+    if not cart:
+        return redirect('cart')
+    subtotal = sum(float(item['price']) * item['quantity'] for item in cart.values())
+    shipping = 0 if subtotal > 50 else 5
+    total = subtotal + shipping
+    context = {
+        'cart_items': cart,
+        'subtotal': f"{subtotal:.2f}",
+        'shipping': f"{shipping:.2f}",
+        'total': f"{total:.2f}",
+        'cart_count': len(cart)
+    }
+    return render(request, 'checkout.html', context)
