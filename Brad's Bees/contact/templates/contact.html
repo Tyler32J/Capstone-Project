@@ -13,6 +13,15 @@
         <h2 class="contact-card-h2">Contact Us</h2>
         <p>Call us any time for bee removal or service questions.</p>
 
+        {% if messages %}
+        <ul class = "message-list">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+
         <form method="post" enctype="multipart/form-data" class="contact-form">
             {% csrf_token %}
             <div class="form-group">

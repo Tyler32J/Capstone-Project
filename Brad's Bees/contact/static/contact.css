@@ -118,7 +118,10 @@
   /* more stuff if needed */
 }
 
-
+.message-list {
+  color: green;
+  /* more stuff if needed */
+}
 
 @media (max-width: 640px) {
   .contact-section {
