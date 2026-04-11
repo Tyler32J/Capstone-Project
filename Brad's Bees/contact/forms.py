@@ -23,7 +23,7 @@ class SubmissionForm(forms.ModelForm):
     phone = forms.CharField(max_length=12, required=True, widget=forms.TextInput(attrs={
         'placeholder': 'XXX-XXX-XXXX'
     }))
-    service = forms.CharField(max_length=20, required=True)
+    service = forms.ChoiceField(choices=Submission.SERVICE_CHOICES)#(max_length=20, required=True)
     message = forms.CharField(max_length=20, required=True, widget=forms.TextInput(attrs={
         'placeholder': 'Tell us about your needs...'
     }))
