@@ -1,0 +1,353 @@
+:root {
+  --edu-bg-cream: #efede0;
+  --edu-bg-soft: #f3f3f3;
+  --edu-card-cream: #ece9d8;
+  --edu-card-light: #f4f4f4;
+  --edu-navy: #0f1b37;
+  --edu-navy-2: #112047;
+  --edu-amber: #d47a00;
+  --edu-amber-dark: #bd6700;
+  --edu-hero-grad-1: #d67a00;
+  --edu-hero-grad-2: #b45a07;
+  --edu-text: #18233f;
+  --edu-muted: #3f4a64;
+  --edu-white: #ffffff;
+  --edu-shadow: 0 8px 18px rgba(16, 24, 40, 0.08);
+  --edu-radius: 14px;
+}
+
+/* Match site font */
+.edu-page,
+.edu-page h1,
+.edu-page h2,
+.edu-page h3,
+.edu-page h4,
+.edu-page p,
+.edu-page li,
+.edu-page a,
+.edu-page button,
+.edu-page input,
+.edu-page textarea,
+.edu-page select {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.edu-page {
+  background: var(--edu-bg-cream);
+  color: var(--edu-text);
+}
+
+.edu-container {
+  width: min(1220px, 92%);
+  margin: 0 auto;
+}
+
+/* Hero */
+.edu-hero {
+  background: linear-gradient(120deg, var(--edu-hero-grad-1), var(--edu-hero-grad-2));
+  color: var(--edu-white);
+  text-align: center;
+  padding: 62px 0 72px;
+}
+
+.edu-hero-title {
+  margin: 0 0 8px;
+  font-size: clamp(2rem, 3.2vw, 2.9rem);
+  line-height: 1.2;
+  font-weight: 800;
+  color: var(--edu-white);
+}
+
+.edu-hero-subtitle {
+  margin: 0 auto;
+  max-width: 760px;
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  line-height: 1.42;
+  color: rgba(255, 255, 255, 0.97);
+}
+
+/* Mission */
+.edu-mission-wrap {
+  padding: 54px 0 56px;
+  background: var(--edu-bg-cream);
+}
+
+.edu-mission-card {
+  max-width: 740px;
+  margin: 0 auto;
+  text-align: center;
+  background: var(--edu-card-light);
+  border-radius: var(--edu-radius);
+  box-shadow: var(--edu-shadow);
+  padding: 42px 42px 40px;
+}
+
+.edu-mission-icon-wrap {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 14px;
+  border-radius: 999px;
+  background: var(--edu-amber);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.edu-mission-icon-img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: block;
+}
+
+.edu-mission-title {
+  margin: 0 0 12px;
+  color: var(--edu-navy);
+  font-size: clamp(2rem, 2.9vw, 2.6rem);
+  line-height: 1.2;
+}
+
+.edu-mission-text {
+  margin: 0 auto;
+  max-width: 650px;
+  font-size: 1.06rem;
+  line-height: 1.7;
+  color: var(--edu-muted);
+}
+
+/* Shared section title */
+.edu-section-title {
+  text-align: center;
+  margin: 0 0 28px;
+  color: var(--edu-navy);
+  font-size: clamp(2rem, 3.1vw, 2.9rem);
+  line-height: 1.2;
+}
+
+/* Programs */
+.edu-programs {
+  background: var(--edu-bg-soft);
+  padding: 56px 0 64px;
+}
+
+.edu-program-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
+}
+
+.edu-program-card {
+  background: var(--edu-card-cream);
+  border-radius: var(--edu-radius);
+  box-shadow: var(--edu-shadow);
+  padding: 26px 26px 22px;
+}
+
+.edu-program-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: var(--edu-amber);
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.edu-program-icon-img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  display: block;
+}
+
+.edu-program-card h3 {
+  margin: 0 0 10px;
+  color: var(--edu-navy);
+  font-size: 2rem;
+  line-height: 1.15;
+}
+
+.edu-program-card p {
+  margin: 0 0 11px;
+  color: var(--edu-muted);
+  font-size: 1.02rem;
+  line-height: 1.5;
+}
+
+.edu-program-card ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.edu-program-card li {
+  position: relative;
+  margin: 0 0 7px;
+  padding-left: 16px;
+  color: var(--edu-muted);
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.edu-program-card li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--edu-amber);
+  font-weight: 700;
+}
+
+/* Learn */
+.edu-learn {
+  background: var(--edu-bg-cream);
+  padding: 58px 0 52px;
+}
+
+.edu-learn-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px 26px;
+}
+
+.edu-learn-card {
+  background: var(--edu-card-light);
+  border-radius: var(--edu-radius);
+  box-shadow: var(--edu-shadow);
+  padding: 24px 24px 20px;
+}
+
+.edu-learn-card h3 {
+  margin: 0 0 10px;
+  color: var(--edu-amber);
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+.edu-learn-card ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.edu-learn-card li {
+  position: relative;
+  margin: 0 0 8px;
+  padding-left: 24px;
+  color: var(--edu-muted);
+  font-size: 1.04rem;
+  line-height: 1.45;
+}
+
+.edu-learn-card li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--edu-amber);
+  font-weight: 700;
+}
+
+/* CTA */
+.edu-cta {
+  background: linear-gradient(120deg, var(--edu-hero-grad-1), var(--edu-hero-grad-2));
+  color: var(--edu-white);
+  text-align: center;
+  padding: 52px 0 58px;
+}
+
+.edu-cta-inner h2 {
+  margin: 0 0 10px;
+  color: var(--edu-white);
+  font-size: clamp(2rem, 3vw, 2.7rem);
+  line-height: 1.2;
+}
+
+.edu-cta-inner p {
+  margin: 0 auto 22px;
+  max-width: 760px;
+  color: rgba(255, 255, 255, 0.97);
+  font-size: clamp(1rem, 1.2vw, 1.14rem);
+  line-height: 1.45;
+}
+
+.edu-cta-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.edu-btn {
+  text-decoration: none;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.edu-btn:hover {
+  transform: translateY(-1px);
+  opacity: 0.97;
+}
+
+.edu-btn-dark {
+  background: var(--edu-navy);
+  color: var(--edu-white);
+  box-shadow: 0 6px 14px rgba(10, 18, 35, 0.22);
+}
+
+.edu-btn-light {
+  background: var(--edu-white);
+  color: var(--edu-amber-dark);
+  box-shadow: 0 6px 14px rgba(10, 18, 35, 0.14);
+}
+
+.edu-btn-icon-img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Responsive */
+@media (max-width: 1080px) {
+  .edu-program-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .edu-hero {
+    padding: 52px 0 60px;
+  }
+
+  .edu-mission-wrap {
+    padding-top: 38px;
+  }
+
+  .edu-mission-card {
+    padding: 30px 20px;
+  }
+
+  .edu-program-grid,
+  .edu-learn-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .edu-program-card h3,
+  .edu-learn-card h3 {
+    font-size: 1.6rem;
+  }
+
+  .edu-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

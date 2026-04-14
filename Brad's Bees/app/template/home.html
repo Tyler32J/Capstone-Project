@@ -16,7 +16,7 @@
     <div class="hero-grid">
       <!-- Hero copy and stats -->
       <div>
-        <h1 class="hero-title">Honeybee removal &amp; Premium Honey</h1>
+        <h1 class="hero-title">Honeybee Removal &amp; Premium Honey</h1>
         <p class="hero-subtitle">
           Professional bee removal services and locally sourced, treatment-free honey that brings nature's sweetness to your home.
         </p>
@@ -29,6 +29,7 @@
           <div class="stat-box stat-box-centered">
             <div>
               <div class="stat-number">Insured</div>
+              <div class="stat-label">Protected</div>
             </div>
           </div>
           <div class="stat-box">
@@ -78,21 +79,25 @@
   <div class="container">
     <div class="services-grid">
       <a href="{% url 'services' %}" class="service-card">
+        <img src="{% static 'images/Bee.png' %}" alt="Shop bag icon" class="service-icon">
         <h3 class="service-title">Services</h3>
         <p class="service-description">Your go-to bee service options</p>
       </a>
 
       <a href="{% url 'shop' %}" class="service-card">
+        <img src="{% static 'images/Shopping_Bag.png' %}" alt="Shop bag icon" class="service-icon">
         <h3 class="service-title">Shop</h3>
         <p class="service-description">Pure honey &amp; bee products</p>
       </a>
 
       <a href="{% url 'education' %}" class="service-card">
-        <h3 class="service-title">Education OutReach</h3>
+        <img src="{% static 'images/Book.png' %}" alt="Shop bag icon" class="service-icon">
+        <h3 class="service-title">Educational Outreach</h3>
         <p class="service-description">Learn about bees and sustainability</p>
       </a>
 
       <a href="{% url 'gallery' %}" class="service-card">
+        <img src="{% static 'images/Camera.png' %}" alt="Shop bag icon" class="service-icon">
         <h3 class="service-title">Gallery</h3>
         <p class="service-description">Photos from the field</p>
       </a>
@@ -224,7 +229,7 @@
       <!-- Contact info cards -->
       <div class="contact-info-wrapper">
         <div class="contact-image-wrapper">
-          <img src="{% static 'images/honey_preview.png' %}" alt="Honey and bee products" class="contact-image">
+          <img src="{% static 'images/Honey_Preview.png' %}" alt="Honey and bee products" class="contact-image">
         </div>
 
         <div class="contact-info-list">
