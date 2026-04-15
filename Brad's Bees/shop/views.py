@@ -2,7 +2,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 from decimal import Decimal
-from .models import Product
+from django.contrib import messages
+from django.db import transaction
+from .forms import CheckoutForm
+from .models import Product, Order, OrderItem
 
 def store_view(request):
     """Display all products in the shop"""
@@ -107,17 +110,82 @@ def update_cart(request, product_id):
 # --- Checkout View ---
 def checkout_view(request):
     """Display the checkout page."""
-    cart = request.session.get('cart', {})
-    if not cart:
-        return redirect('cart')
-    subtotal = sum(float(item['price']) * item['quantity'] for item in cart.values())
-    shipping = 0 if subtotal > 50 else 5
+    cart = request.session.get("cart", {})
+    cart_items = []
+    subtotal = Decimal("0.00")
+
+    for product_id, item in cart.items():
+        try:
+            product = Product.objects.get(id=int(product_id))
+
+            if isinstance(item, dict):
+                quantity = int(item.get("quantity", 1))
+                unit_price = Decimal(str(item.get("price", product.price)))
+            else:
+                quantity = int(item)
+                unit_price = Decimal(str(product.price))
+
+            line_total = unit_price * quantity
+            subtotal += line_total
+
+            cart_items.append({
+                "product": product,
+                "quantity": quantity,
+                "unit_price": unit_price,
+                "line_total": line_total,
+            })
+        except (Product.DoesNotExist, ValueError, TypeError):
+            continue
+
+    shipping = Decimal("0.00")
     total = subtotal + shipping
-    context = {
-        'cart_items': cart,
-        'subtotal': f"{subtotal:.2f}",
-        'shipping': f"{shipping:.2f}",
-        'total': f"{total:.2f}",
-        'cart_count': len(cart)
-    }
-    return render(request, 'checkout.html', context)
+
+    if request.method == "POST":
+        form = CheckoutForm(request.POST)
+
+        if not cart_items:
+            messages.error(request, "Your cart is empty.")
+            return redirect("shop")
+
+        if form.is_valid():
+            with transaction.atomic():
+                order = Order.objects.create(
+                    first_name=form.cleaned_data["first_name"],
+                    last_name=form.cleaned_data["last_name"],
+                    email=form.cleaned_data["email"],
+                    phone=form.cleaned_data["phone"],
+                    address_line_1=form.cleaned_data["address_line_1"],
+                    address_line_2=form.cleaned_data["address_line_2"],
+                    city=form.cleaned_data["city"],
+                    state=form.cleaned_data["state"],
+                    zip_code=form.cleaned_data["zip_code"],
+                    notes=form.cleaned_data["notes"],
+                    subtotal=subtotal,
+                    shipping=shipping,
+                    total=total,
+                )
+
+                for item in cart_items:
+                    OrderItem.objects.create(
+                        order=order,
+                        product=item["product"],
+                        quantity=item["quantity"],
+                        unit_price=item["unit_price"],
+                        line_total=item["line_total"],
+                    )
+
+            request.session["cart"] = {}
+            request.session.modified = True
+            messages.success(request, f"Order #{order.id} placed successfully.")
+            return redirect("shop")
+    else:
+        form = CheckoutForm()
+
+    return render(request, "checkout.html", {
+        "form": form,
+        "cart_items": cart_items,
+        "subtotal": subtotal,
+        "shipping": shipping,
+        "total": total,
+        "cart_count": len(cart),
+    })

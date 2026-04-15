@@ -11,24 +11,48 @@
 <section class="checkout-section">
     <div class="checkout-container">
         <h1>Checkout</h1>
-        <div class="order-summary">
-            <h2>Order Summary</h2>
-            <div class="summary-row">
-                <span>Subtotal:</span>
-                <span>${{ subtotal }}</span>
+
+        <div class="checkout-grid">
+            <!-- Order Summary first -->
+            <div class="order-summary">
+                <h2>Order Summary</h2>
+                <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <span>${{ subtotal }}</span>
+                </div>
+                <div class="summary-row">
+                    <span>Shipping:</span>
+                    <span>${{ shipping }}</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total:</span>
+                    <span>${{ total }}</span>
+                </div>
+                <a href="{% url 'cart' %}" class="back-to-cart-btn">← Back to Cart</a>
             </div>
-            <div class="summary-row">
-                <span>Shipping:</span>
-                <span>${{ shipping }}</span>
+
+            <!-- Form under summary -->
+            <div class="checkout-form-card">
+                <h2>Billing Details</h2>
+
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+
+                    <div>{{ form.first_name.label_tag }} {{ form.first_name }} {{ form.first_name.errors }}</div>
+                    <div>{{ form.last_name.label_tag }} {{ form.last_name }} {{ form.last_name.errors }}</div>
+                    <div>{{ form.email.label_tag }} {{ form.email }} {{ form.email.errors }}</div>
+                    <div>{{ form.phone.label_tag }} {{ form.phone }} {{ form.phone.errors }}</div>
+                    <div>{{ form.address_line_1.label_tag }} {{ form.address_line_1 }} {{ form.address_line_1.errors }}</div>
+                    <div>{{ form.address_line_2.label_tag }} {{ form.address_line_2 }} {{ form.address_line_2.errors }}</div>
+                    <div>{{ form.city.label_tag }} {{ form.city }} {{ form.city.errors }}</div>
+                    <div>{{ form.state.label_tag }} {{ form.state }} {{ form.state.errors }}</div>
+                    <div>{{ form.zip_code.label_tag }} {{ form.zip_code }} {{ form.zip_code.errors }}</div>
+                    <div>{{ form.notes.label_tag }} {{ form.notes }} {{ form.notes.errors }}</div>
+
+                    <button type="submit" class="checkout-btn">Place Order</button>
+                </form>
             </div>
-            <div class="summary-row total">
-                <span>Total:</span>
-                <span>${{ total }}</span>
-            </div>
-        </div>
-        <div class="checkout-actions">
-            <p>This is a placeholder checkout page. Implement payment and address forms here.</p>
-            <a href="{% url 'cart' %}" class="back-to-cart-btn">← Back to Cart</a>
         </div>
     </div>
 </section>

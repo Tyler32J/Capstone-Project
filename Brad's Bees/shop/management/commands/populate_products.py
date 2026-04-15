@@ -39,7 +39,7 @@ class Command(BaseCommand):
                 'name': 'Pure Beeswax',
                 'variant': '1 lb Block',
                 'description': 'Raw beeswax block for candle making, lip balms, and other DIY projects. 100% natural.',
-                'price': None,
+                'price': Decimal('20.00'),
                 'stock': 15,
                 'rating': 4.8
             },
@@ -47,7 +47,7 @@ class Command(BaseCommand):
                 'name': 'Beeswax Candles',
                 'variant': 'Singles',
                 'description': 'Hand-poured beeswax candles with natural honey scent. Clean burning and long-lasting.',
-                'price': None,
+                'price': Decimal('20.00'),
                 'stock': 25,
                 'rating': 5.0
             },

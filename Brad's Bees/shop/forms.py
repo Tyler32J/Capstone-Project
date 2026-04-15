@@ -27,3 +27,19 @@ class AddItemForm(forms.ModelForm): # for cart, user side
             'quantity',
         ]
     quantity = forms.IntegerField(min_value=1, initial=1)
+
+class CheckoutForm(forms.Form):
+    first_name = forms.CharField(max_length=100)
+    last_name = forms.CharField(max_length=100)
+    email = forms.EmailField()
+    phone = forms.CharField(max_length=20)
+    address_line_1 = forms.CharField(max_length=255, label="Address")
+    address_line_2 = forms.CharField(
+        max_length=255,
+        required=False,
+        label="Apartment, suite, etc. (optional)",
+    )
+    city = forms.CharField(max_length=100)
+    state = forms.CharField(max_length=100)
+    zip_code = forms.CharField(max_length=20, label="ZIP Code")
+    notes = forms.CharField(widget=forms.Textarea, required=False)

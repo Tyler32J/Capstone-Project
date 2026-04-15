@@ -712,3 +712,13 @@
         width: 100%;
     }
 }
+
+.checkout-section .order-summary {
+    position: static;
+    top: auto;
+}
+
+/* optional: force vertical layout */
+.checkout-section .checkout-grid {
+    display: block;
+}
