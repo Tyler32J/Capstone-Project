@@ -35,7 +35,7 @@ def contact_view(request):
                 subject,
                 message,
                 settings.DEFAULT_FROM_EMAIL,
-                [business@example.com], # change to Brad's email
+                ['business@example.com'], # change to Brad's email
                 fail_silently = False,
             )
 
@@ -54,3 +54,31 @@ def contact_view(request):
         form = SubmissionForm()
 
     return render(request, 'contact.html', {'form': form})
+
+
+
+### FOR BRAD ###
+
+# Step-by-step:
+# Go to your Google account:
+# https://myaccount.google.com/security
+
+# Turn ON:
+# 2-Step Verification (required)
+
+# After that, go to:
+# https://myaccount.google.com/apppasswords
+
+# Create a new app password:
+# App: Mail
+# Device: Other → type Django
+
+# Google will give you a 16-character password like:
+# abcd efgh ijkl mnop
+
+
+
+### FOR ME ###
+
+# in settings.py:
+# EMAIL_HOST_PASSWORD = 'abcdefghijklmnop'  # ← app password (NO spaces)
