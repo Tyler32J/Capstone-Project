@@ -71,7 +71,7 @@ main {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .brand-logo {
@@ -135,7 +135,6 @@ footer {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   column-gap: 56px;
   row-gap: 20px;
-
   text-align: center;
   justify-items: center;
 }
@@ -150,8 +149,9 @@ footer > div:first-child {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
+  gap: 10px;
   margin-bottom: 10px;
+  transform: translateX(-50px);
 }
 
 .footer-logo {

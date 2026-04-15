@@ -35,7 +35,7 @@ def contact_view(request):
                 subject,
                 message,
                 settings.DEFAULT_FROM_EMAIL,
-                [business@example.com], # change to Brad's email
+                ['business@example.com'], # change to Brad's email
                 fail_silently = False,
             )
 
@@ -55,12 +55,30 @@ def contact_view(request):
 
     return render(request, 'contact.html', {'form': form})
 
-#### FOLLOWING IS EMAIL SETUP TEMPLATE FOR LAUNCH == SETTINGS.PY ####
 
-#  EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-#  EMAIL_HOST = 'smtp.gmail.com'
-#  EMAIL_PORT = 587
-#  EMAIL_USE_TLS = True
-#  EMAIL_HOST_USER = 'your_email@gmail.com'
-#  EMAIL_HOST_PASSWORD = 'your_app_password'
-#  DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+### FOR BRAD ###
+
+# Step-by-step:
+# Go to your Google account:
+# https://myaccount.google.com/security
+
+# Turn ON:
+# 2-Step Verification (required)
+
+# After that, go to:
+# https://myaccount.google.com/apppasswords
+
+# Create a new app password:
+# App: Mail
+# Device: Other → type Django
+
+# Google will give you a 16-character password like:
+# abcd efgh ijkl mnop
+
+
+
+### FOR ME ###
+
+# in settings.py:
+# EMAIL_HOST_PASSWORD = 'abcdefghijklmnop'  # ← app password (NO spaces)

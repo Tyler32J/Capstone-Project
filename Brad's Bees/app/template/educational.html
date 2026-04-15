@@ -8,8 +8,209 @@
 {% endblock %}
 
 {% block content %}
-<section>
-    <h2>Education</h2>
-    <p>Learn about bee behavior, safety, and pollination.</p>
-</section>
+<div class="edu-page">
+
+  <!-- Hero -->
+  <section class="edu-hero">
+    <div class="edu-container">
+      <h1 class="edu-hero-title">Education & Outreach</h1>
+      <p class="edu-hero-subtitle">
+        Inspiring the next generation to appreciate and protect our vital pollinators through
+        hands-on learning experiences
+      </p>
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section class="edu-mission-wrap">
+    <div class="edu-container">
+      <div class="edu-mission-card">
+        <div class="edu-mission-icon-wrap" aria-hidden="true">
+          <img src="{% static 'images/Hat.png' %}" alt="Mission icon" class="edu-mission-icon-img">
+        </div>
+        <h2 class="edu-mission-title">Our Mission</h2>
+        <p class="edu-mission-text">
+          At Brad's Bees, we believe education is the key to conservation. Through interactive
+          presentations, live demonstrations, and community workshops, we teach students and
+          adults about the critical role bees play in our ecosystem and how we can all help protect
+          these essential pollinators.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Programs -->
+  <section class="edu-programs">
+    <div class="edu-container">
+      <h2 class="edu-section-title">Educational Programs</h2>
+
+      <div class="edu-program-grid">
+        <article class="edu-program-card">
+          <div class="edu-program-icon-wrap" aria-hidden="true">
+            <img src="{% static 'images/School.png' %}" alt="School visits icon" class="edu-program-icon-img">
+          </div>
+          <h3>School Visits</h3>
+          <p>
+            Interactive classroom presentations for grades K-12, featuring live observation hives,
+            bee specimens, and age-appropriate activities.
+          </p>
+          <ul>
+            <li>45-60 minute presentations</li>
+            <li>Hands-on learning activities</li>
+            <li>Q&A sessions with Brad</li>
+          </ul>
+        </article>
+
+        <article class="edu-program-card">
+          <div class="edu-program-icon-wrap" aria-hidden="true">
+            <img src="{% static 'images/People.png' %}" alt="Community workshops icon" class="edu-program-icon-img">
+          </div>
+          <h3>Community Workshops</h3>
+          <p>
+            Monthly workshops open to the public covering beekeeping basics, pollinator gardens,
+            and sustainable practices.
+          </p>
+          <ul>
+            <li>Beginner beekeeping courses</li>
+            <li>Pollinator garden design</li>
+            <li>Honey harvesting demos</li>
+          </ul>
+        </article>
+
+        <article class="edu-program-card">
+          <div class="edu-program-icon-wrap" aria-hidden="true">
+            <img src="{% static 'images/plant.png' %}" alt="Apiary tours icon" class="edu-program-icon-img">
+          </div>
+          <h3>Apiary Tours</h3>
+          <p>
+            Guided tours of our working apiary where visitors can observe beekeeping operations and
+            learn about hive management.
+          </p>
+          <ul>
+            <li>Small group tours (max 15)</li>
+            <li>Safety equipment provided</li>
+            <li>See bees up close safely</li>
+          </ul>
+        </article>
+
+        <article class="edu-program-card">
+          <div class="edu-program-icon-wrap" aria-hidden="true">
+            <img src="{% static 'images/Book.png' %}" alt="Library programs icon" class="edu-program-icon-img">
+          </div>
+          <h3>Library Programs</h3>
+          <p>
+            Summer reading programs and special events at local libraries featuring storytelling,
+            crafts, and bee education.
+          </p>
+          <ul>
+            <li>All ages welcome</li>
+            <li>Themed activities</li>
+            <li>Free attendance</li>
+          </ul>
+        </article>
+
+        <article class="edu-program-card">
+          <div class="edu-program-icon-wrap" aria-hidden="true">
+            <img src="{% static 'images/Hat.png' %}" alt="Hives for Heroes icon" class="edu-program-icon-img">
+          </div>
+          <h3>Hives for Heroes</h3>
+          <p>
+            Supporting veterans through beekeeping therapy and mentorship programs that promote
+            wellness and community connection.
+          </p>
+          <ul>
+            <li>Veteran beekeeping training</li>
+            <li>Therapeutic benefits</li>
+            <li>Community building</li>
+          </ul>
+        </article>
+
+        <article class="edu-program-card">
+          <div class="edu-program-icon-wrap" aria-hidden="true">
+            <img src="{% static 'images/Calendar.png' %}" alt="Custom events icon" class="edu-program-icon-img">
+          </div>
+          <h3>Custom Events</h3>
+          <p>
+            Tailored presentations for birthday parties, corporate events, farmers markets, and
+            community festivals.
+          </p>
+          <ul>
+            <li>Flexible scheduling</li>
+            <li>Custom content</li>
+            <li>All group sizes</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- What You'll Learn -->
+  <section class="edu-learn">
+    <div class="edu-container">
+      <h2 class="edu-section-title">What You'll Learn</h2>
+
+      <div class="edu-learn-grid">
+        <article class="edu-learn-card">
+          <h3>Bee Biology & Behavior</h3>
+          <ul>
+            <li>The three types of bees in a colony</li>
+            <li>How bees communicate through dance</li>
+            <li>Bee lifecycle from egg to adult</li>
+            <li>How honeycomb is created</li>
+          </ul>
+        </article>
+
+        <article class="edu-learn-card">
+          <h3>Environmental Impact</h3>
+          <ul>
+            <li>Why bees are essential pollinators</li>
+            <li>Which crops depend on bee pollination</li>
+            <li>Threats facing bee populations</li>
+            <li>How you can help protect bees</li>
+          </ul>
+        </article>
+
+        <article class="edu-learn-card">
+          <h3>Beekeeping Basics</h3>
+          <ul>
+            <li>Essential beekeeping equipment</li>
+            <li>How to inspect a hive safely</li>
+            <li>Seasonal hive management</li>
+            <li>Honey extraction process</li>
+          </ul>
+        </article>
+
+        <article class="edu-learn-card">
+          <h3>Pollinator Gardens</h3>
+          <ul>
+            <li>Best flowers for pollinators</li>
+            <li>Creating year-round blooms</li>
+            <li>Avoiding harmful pesticides</li>
+            <li>Water sources for bees</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="edu-cta">
+    <div class="edu-container edu-cta-inner">
+      <h2>Book an Educational Program</h2>
+      <p>
+        Interested in bringing Brad's Bees to your school, organization, or event?
+        Get in touch to discuss custom programs and availability.
+      </p>
+
+      <div class="edu-cta-actions">
+        <a class="edu-btn edu-btn-dark" href="mailto:bradbessetti@gmail.com">
+          <img src="{% static 'images/edu/email.png' %}" alt="Email icon" class="edu-btn-icon-img">
+          bradbessetti@gmail.com
+        </a>
+        <a class="edu-btn edu-btn-light" href="{% url 'contact' %}">Send Us a Message</a>
+      </div>
+    </div>
+  </section>
+
+</div>
 {% endblock %}
