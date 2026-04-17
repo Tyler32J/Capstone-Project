@@ -83,19 +83,23 @@
 }
 
 .edu-mission-icon-wrap {
-  width: 56px;
-  height: 56px;
-  margin: 0 auto 14px;
-  border-radius: 999px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: var(--edu-amber);
-  display: grid;
-  place-items: center;
+  margin: 0 auto 14px;
+  z-index: 1;
   overflow: hidden;
 }
 
 .edu-mission-icon-img {
-  width: 28px;
-  height: 28px;
+  width: 200%;
+  height: 200%;
+  max-width: 200%;
+  max-height: 200%;
   object-fit: contain;
   display: block;
 }
@@ -143,20 +147,25 @@
   padding: 26px 26px 22px;
 }
 
+/* Orange circle and icon image */
 .edu-program-icon-wrap {
-  width: 52px;
-  height: 52px;
-  border-radius: 999px;
-  display: grid;
-  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: var(--edu-amber);
   margin-bottom: 16px;
+  z-index: 1;
   overflow: hidden;
 }
 
 .edu-program-icon-img {
-  width: 24px;
-  height: 24px;
+  width: 200%;
+  height: 200%;
+  max-width: 200%;
+  max-height: 200%;
   object-fit: contain;
   display: block;
 }
