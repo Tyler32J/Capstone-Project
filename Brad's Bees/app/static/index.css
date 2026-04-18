@@ -75,9 +75,11 @@ main {
 }
 
 .brand-logo {
-  width: 72px;
-  height: 72px;
+  width: 140px;   
+  height: 140px;
   object-fit: contain;
+  margin-top: -24px;  
+  margin-bottom: -24px;
 }
 
 .brand-name {
@@ -155,10 +157,11 @@ footer > div:first-child {
 }
 
 .footer-logo {
-  width: 100px;
-  height: 100px;
+  width: 160px;  
+  height: 160px;
   object-fit: contain;
-  flex-shrink: 0;
+  margin-top: -20px; 
+  margin-bottom: -20px;
 }
 
 footer h3 {
