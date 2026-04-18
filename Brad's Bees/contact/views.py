@@ -71,7 +71,7 @@ def contact_view(request):
 
 # Create a new app password:
 # App: Mail
-# Device: Other → type Django
+# Device: Other → type "Django"
 
 # Google will give you a 16-character password like:
 # abcd efgh ijkl mnop
