@@ -29,10 +29,20 @@
                         {% for item in cart_items %}
                         <tr>
                             <td class="product-cell">
-                                {% if item.image %}
-                                <img src="{{ item.image }}" alt="{{ item.name }}" class="cart-product-image">
+                                   {% if item.image %}
+                                    <img src="{{ item.image.url }}" alt="{{ item.name }}" class="cart-product-image">
+                                {% elif item.name == "Honey" and item.variant == "Gallon" %}
+                                    <img src="{% static 'images/Gallon_of_Honey.png' %}" alt="Honey Gallon" class="cart-product-image">
+                                {% elif item.name == "Honey" and item.variant == "Quart" %}
+                                    <img src="{% static 'images/Quart_of_Honey.png' %}" alt="Honey Quart" class="cart-product-image">
+                                {% elif item.name == "Honey" and item.variant == "Pint" %}
+                                    <img src="{% static 'images/Pint_of_Honey.png' %}" alt="Honey Pint" class="cart-product-image">
+                                {% elif item.name == "Pure Beeswax" %}
+                                    <img src="{% static 'images/Beeswax.png' %}" alt="Pure Beeswax" class="cart-product-image">
+                                {% elif item.name == "Beeswax Candles" %}
+                                    <img src="{% static 'images/Beeswax_Candles.png' %}" alt="Beeswax Candle" class="cart-product-image">
                                 {% else %}
-                                <div class="no-image">No Image</div>
+                                    <div class="product-image-placeholder">No Image</div>
                                 {% endif %}
                                 <div>
                                     <strong>{{ item.name }}</strong>
