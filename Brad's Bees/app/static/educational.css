@@ -1,3 +1,15 @@
+.edu-chat-icon {
+  width: 3rem !important; 
+  height: 3rem !important;
+  object-fit: contain;
+  display: block;
+  position: absolute;
+  left: 1rem !important;
+  top: 55% !important;
+  transform: translateY(-50%);
+  z-index: 0;
+  padding: 0;
+}
 :root {
   --edu-bg-cream: #efede0;
   --edu-bg-soft: #f3f3f3;
@@ -290,15 +302,28 @@
 }
 
 .edu-btn {
-  text-decoration: none;
-  border-radius: 10px;
-  padding: 12px 20px;
-  font-size: 1rem;
-  font-weight: 700;
-  display: inline-flex;
+  position: relative;
+  display: flex;
   align-items: center;
-  gap: 10px;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  justify-content: center;
+  height: 3.5rem;
+  min-width: 0;
+  padding-left: 4.5rem; /* icon width + spacing */
+  padding-right: 1.5rem;
+  box-sizing: border-box;
+}
+
+.edu-btn-icon-img {
+  width: 10rem;
+  height: 10rem;
+  object-fit: contain;
+  display: block;
+  position: absolute;
+  left: -2.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 0;
+  padding: 0;
 }
 
 .edu-btn:hover {
@@ -316,13 +341,6 @@
   background: var(--edu-white);
   color: var(--edu-amber-dark);
   box-shadow: 0 6px 14px rgba(10, 18, 35, 0.14);
-}
-
-.edu-btn-icon-img {
-  width: 20px;
-  height: 20px;
-  object-fit: contain;
-  display: block;
 }
 
 /* Responsive */

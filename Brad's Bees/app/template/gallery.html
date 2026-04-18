@@ -8,8 +8,26 @@
 {% endblock %}
 
 {% block content %}
-<section>
-    <h2>Gallery</h2>
-    <p>Photos of hives, removals, and bee-friendly projects.</p>
+<section class="gallery-hero">
+    <h1>Brad's Gallery</h1>
+    <p class="gallery-desc">
+        A visual journey through the world of beekeeping, honey production, and the beauty of nature's pollinators
+    </p>
+</section>
+<div class="gallery-filters">
+    <button class="active">All</button>
+    <button>Beekeeping</button>
+    <button>Honey</button>
+    <button>Education</button>
+</div>
+<section class="gallery-grid">
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1464983953574-0892a716854b" alt="Bees on honeycomb"></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" alt="Honeycomb closeup"></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca" alt="Bee on flower"></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308" alt="Honey and bread"></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1465101178521-c1a9136a3b99" alt="Beehives in field"></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429" alt="Bee on mint flower"></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca" alt="Bee swarm"></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1465101178521-c1a9136a3b99" alt="Sunset over field"></div>
 </section>
 {% endblock %}

@@ -60,9 +60,11 @@ body {
 }
 
 h1 {
-  font-size: var(--font-size-6xl);
-  font-weight: 500;
-  line-height: 1.2;
+  font-size: var(--font-size-2xl);
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+  padding: 0 !important;
+  line-height: 1 !important;
   color: var(--color-gray-900);
 }
 
@@ -314,23 +316,32 @@ img {
   padding-top: var(--spacing-16);
   padding-bottom: var(--spacing-16);
   background-color: var(--color-amber-50);
+  
 }
 
 .services-grid {
   display: grid;
-  gap: var(--spacing-6);
+  gap: 1.5rem;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .service-card {
   background-color: var(--color-gray-900);
   color: var(--color-white);
   padding: var(--spacing-8);
+  padding-top: 0%;
+  padding-bottom: 5rem;
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-lg);
   transition: all 0.3s ease;
   cursor: pointer;
   text-align: center;
   display: block;
+  width: 22rem;
+  height: 11rem;
+  
 }
 
 .service-card:hover {
@@ -340,18 +351,34 @@ img {
 }
 
 .service-icon {
-  width: 3rem;
-  height: 3rem;
+  width: 8rem;
+  height: 7rem;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: var(--spacing-4);
+  margin-bottom: 0rem;
+  margin-top: 0rem;
+  padding: 0%;
+  z-index: 0;
+  margin-bottom: 0rem;
+
 }
 
-.service-title {
-  font-size: var(--font-size-2xl);
-  margin-bottom: var(--spacing-2);
-}
 
+.service-icon {
+  width: 8rem;
+  height: 7rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding: 0 !important;
+}
+img.service-icon {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding: 0 !important;
+  display: block;
+}
 .service-description {
   color: var(--color-gray-300);
 }
@@ -706,4 +733,14 @@ section {
 /* Min height */
 .min-h-screen {
   min-height: 100vh;
+}
+
+.service-title {
+  font-size: var(--font-size-2xl);
+  margin-bottom: 0 !important;
+  margin-top: -20px !important;
+  /* padding: 0 !important; */
+  line-height: 1.5 !important;
+  position: relative;
+  z-index: 1;
 }
