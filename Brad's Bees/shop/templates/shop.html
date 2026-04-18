@@ -24,9 +24,19 @@
             {% for product in products %}
             <div class="product-card">
                 {% if product.image %}
-                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
+                {% elif product.name == "Honey" and product.variant == "Gallon" %}
+                    <img src="{% static 'images/Gallon_of_Honey.png' %}" alt="Honey Gallon" class="product-image">
+                {% elif product.name == "Honey" and product.variant == "Quart" %}
+                    <img src="{% static 'images/Quart_of_Honey.png' %}" alt="Honey Quart" class="product-image">
+                {% elif product.name == "Honey" and product.variant == "Pint" %}
+                    <img src="{% static 'images/Pint_of_Honey.png' %}" alt="Honey Pint" class="product-image">
+                {% elif product.name == "Pure Beeswax" %}
+                    <img src="{% static 'images/Beeswax.png' %}" alt="Pure Beeswax" class="product-image">
+                {% elif product.name == "Beeswax Candles" %}
+                    <img src="{% static 'images/Beeswax_Candles.png' %}" alt="Beeswax Candle" class="product-image">
                 {% else %}
-                <div class="product-image-placeholder">No Image</div>
+                    <div class="product-image-placeholder">No Image</div>
                 {% endif %}
                 
                 <h3>{{ product.name }}</h3>

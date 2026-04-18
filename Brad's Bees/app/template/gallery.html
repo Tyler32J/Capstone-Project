@@ -1,33 +1,113 @@
-{% extends "index.html" %}
-{% load static %}
-
-{% block title %}Gallery - Brad's Bees{% endblock %}
-
-{% block css %}
-<link rel="stylesheet" href="{% static 'gallery.css' %}">
-{% endblock %}
-
-{% block content %}
+{% extends "index.html" %} {% load static %} {% block title %}Gallery - Brad's
+Bees{% endblock %} {% block css %}
+<link rel="stylesheet" href="{% static 'gallery.css' %}" />
+{% endblock %} {% block content %}
 <section class="gallery-hero">
-    <h1>Brad's Gallery</h1>
-    <p class="gallery-desc">
-        A visual journey through the world of beekeeping, honey production, and the beauty of nature's pollinators
-    </p>
+  <h1>Brad's Gallery</h1>
+  <p class="gallery-desc">
+    A visual journey through the world of beekeeping, honey production, and the
+    beauty of nature's pollinators
+  </p>
 </section>
 <div class="gallery-filters">
-    <button class="active">All</button>
-    <button>Beekeeping</button>
-    <button>Honey</button>
-    <button>Education</button>
+  {% comment %} <button class="active">All</button> {% endcomment %}
+  {% comment %} <button>Beekeeping</button>
+  <button>Honey</button>
+  <button>Education</button> {% endcomment %}
 </div>
 <section class="gallery-grid">
-    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1464983953574-0892a716854b" alt="Bees on honeycomb"></div>
-    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" alt="Honeycomb closeup"></div>
-    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca" alt="Bee on flower"></div>
-    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308" alt="Honey and bread"></div>
-    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1465101178521-c1a9136a3b99" alt="Beehives in field"></div>
-    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429" alt="Bee on mint flower"></div>
-    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca" alt="Bee swarm"></div>
-    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1465101178521-c1a9136a3b99" alt="Sunset over field"></div>
+  <div class="gallery-item">
+    <img src="{% static 'images/IMG_1.jpeg' %}" alt="IMG_0016" />
+  </div>
+  <div class="gallery-item">
+    <img src="{% static 'images/IMG_2.jpeg' %}" alt="IMG_0064" />
+  </div>
+  <div class="gallery-item">
+    <img src="{% static 'images/IMG_3.jpeg' %}" alt="IMG_0155" />
+  </div>
+  <div class="gallery-item">
+    <img src="{% static 'images/IMG_4.jpeg' %}" alt="IMG_0159" />
+  </div>
+  <div class="gallery-item">
+    <img src="{% static 'images/IMG_5.jpeg' %}" alt="IMG_0484" />
+  </div>
+  <div class="gallery-item">
+    <img src="{% static 'images/IMG_6.JPEG' %}" alt="IMG_0498" />
+  </div>
+  <div class="gallery-item">
+    <img src="{% static 'images/IMG_7.jpeg' %}" alt="IMG_0532" />
+  </div>
+  <div class="gallery-item">
+    <img src="{% static 'images/IMG_8.jpeg' %}" alt="IMG_0580" />
+  </div>
+  <div class="gallery-item">
+    <img src="{% static 'images/IMG_9.jpeg' %}" alt="IMG_1247" />
+  </div>
+  <div class="gallery-item">
+    <img src="{% static 'images/IMG_10.jpeg' %}" alt="IMG_2244" />
+  </div>
+  <div class="gallery-item">
+    <img src="{% static 'images/IMG_11.jpeg' %}" alt="IMG_2279" />
+  </div>
+  <div class="gallery-item">
+    <img src="{% static 'images/IMG_12.png' %}" alt="IMG_2284" />
+  </div>
+  <div class="gallery-item">
+    <img src="{% static 'images/IMG_13.jpeg' %}" alt="IMG_2323" />
+  </div>
+  <div class="gallery-item">
+    <img src="{% static 'images/IMG_14.jpeg' %}" alt="IMG_2598" />
+  </div>
+  <div class="gallery-item">
+    <img src="{% static 'images/IMG_15.jpeg' %}" alt="IMG_2599" />
+  </div>
+  <div class="gallery-item">
+    <img src="{% static 'images/IMG_16.jpeg' %}" alt="IMG_4093" />
+  </div>
+  <div class="gallery-item">
+    <img src="{% static 'images/IMG_17.jpeg' %}" alt="IMG_4390" />
+  </div>
+  <div class="gallery-item">
+    <img src="{% static 'images/IMG_18.jpeg' %}" alt="IMG_6017" />
+  </div>
+  <div class="gallery-item">
+    <img src="{% static 'images/IMG_19.jpeg' %}" alt="IMG_6029" />
+  </div>
+  <div class="gallery-item">
+    <img src="{% static 'images/IMG_20.jpeg' %}" alt="IMG_6031" />
+  </div>
+  <div class="gallery-item">
+    <img src="{% static 'images/IMG_21.jpeg' %}" alt="IMG_7257" />
+  </div>
+  <div class="gallery-item">
+    <img src="{% static 'images/IMG_22.jpeg' %}" alt="IMG_7385" />
+  </div>
+  <div class="gallery-item">
+    <img src="{% static 'images/IMG_23.jpeg' %}" alt="IMG_7719" />
+  </div>
+  <div class="gallery-item">
+    <img src="{% static 'images/IMG_24.JPG' %}" alt="IMG_7776 (1)" />
+  </div>
+  <div class="gallery-item">
+    <img src="{% static 'images/IMG_25.jpeg' %}" alt="IMG_8361" />
+  </div>
+  <div class="gallery-item">
+    <img src="{% static 'images/IMG_26.jpeg' %}" alt="IMG_9428" />
+  </div>
+  <div class="gallery-item">
+    <img src="{% static 'images/IMG_27.JPEG' %}" alt="IMG_9443" />
+  </div>
+  <div class="gallery-item">
+    <img src="{% static 'images/IMG_28.jpeg' %}" alt="IMG_9608" />
+  </div>
+  <div class="gallery-item">
+    <img src="{% static 'images/IMG_29.jpeg' %}" alt="IMG_9661" />
+  </div>
+  <div class="gallery-item">
+    <img src="{% static 'images/IMG_30.jpeg' %}" alt="IMG_9672" />
+  </div>
+  <div class="gallery-item">
+    <img src="{% static 'images/IMG_31.jpeg' %}" alt="IMG_9678" />
+  </div>
 </section>
 {% endblock %}
