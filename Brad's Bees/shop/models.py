@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 from app.models import *
 
 
@@ -19,7 +20,14 @@ class Product(models.Model):
 
 
 class Cart(models.Model):
-    # user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="carts",
+    )
+    session_key = models.CharField(max_length=40, null=True, blank=True, db_index=True)
     created_at = models.DateTimeField(auto_now_add=True)
     
     def grand_total(self):
@@ -31,6 +39,9 @@ class Item(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="products")
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name="items")
     quantity = models.PositiveIntegerField(default=1)
+
+    class Meta:
+        unique_together = ("product", "cart")
 
     def total_price(self):
         return self.product.price * self.quantity

@@ -103,6 +103,19 @@
     background-color: var(--bg-light);
 }
 
+/* Keep tall containers fully visible instead of cropped */
+.product-image-tall {
+    object-fit: contain;
+    object-position: center;
+    padding: 2px 6px;
+}
+
+.product-image-pint {
+    object-fit: contain;
+    object-position: center;
+    padding: 10px 14px;
+}
+
 .product-image-placeholder {
     width: 100%;
     height: 200px;
@@ -118,6 +131,7 @@
     font-size: 1.2em;
     margin: 15px 15px 5px 15px;
     color: var(--text-dark);
+    min-height: 1.5em;
 }
 
 .variant {
@@ -125,6 +139,33 @@
     font-size: 0.9em;
     display: block;
     margin: 0 15px 10px 15px;
+    min-height: 1.2em;
+}
+
+.product-badges {
+    display: flex;
+    gap: 8px;
+    padding: 0 15px 4px;
+    flex-wrap: wrap;
+}
+
+.product-badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: #21456b;
+    background: #e8f2fc;
+    border: 1px solid #cfe3f7;
+    border-radius: 999px;
+    padding: 4px 9px;
+}
+
+.product-badge-stock {
+    color: #165d34;
+    background: #e7f7ee;
+    border-color: #c7ebd5;
 }
 
 .description {
@@ -133,6 +174,13 @@
     padding: 0 15px;
     flex-grow: 1;
     margin: 10px 0;
+    line-height: 1.45;
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 3.95em;
 }
 
 .product-footer {
@@ -196,6 +244,33 @@
     font-size: 0.95em;
     transition: background-color 0.3s;
     white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+    .shop-hero {
+        padding: 42px 16px;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .products-grid {
+        gap: 20px;
+    }
+
+    .product-image,
+    .product-image-placeholder {
+        height: 190px;
+    }
+
+    .floating-cart-btn {
+        width: 62px;
+        height: 62px;
+        font-size: 30px;
+        bottom: 18px;
+        right: 18px;
+    }
 }
 
 .add-to-cart-btn:hover {

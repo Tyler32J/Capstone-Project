@@ -45,6 +45,101 @@ main {
 }
 
 /* =========================================================
+    Global Messages / Checkout Confirmation
+   ========================================================= */
+.site-messages {
+  position: fixed;
+  top: 78px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1300;
+  width: min(720px, calc(100vw - 24px));
+  padding: 0;
+}
+
+.site-message {
+  border-radius: 16px;
+  padding: 16px 18px;
+  box-shadow: 0 14px 30px rgb(0 0 0 / 0.12);
+  margin-bottom: 0;
+  backdrop-filter: blur(8px);
+  text-align: center;
+  font-size: 1.02rem;
+}
+
+.site-message.success {
+  background: linear-gradient(135deg, #27ae60 0%, #1f8a4d 100%);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.site-message.warning {
+  background: linear-gradient(135deg, #d98500 0%, #b86a00 100%);
+  color: #fff;
+}
+
+.site-message-text {
+  display: block;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.site-messages.fade-out {
+  animation: message-fade 0.35s ease forwards;
+}
+
+.confetti-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 1500;
+}
+
+.confetti-piece {
+  position: absolute;
+  top: 0;
+  width: 10px;
+  height: 16px;
+  border-radius: 999px;
+  pointer-events: none;
+  z-index: 1500;
+  animation: confetti-fall 4.3s cubic-bezier(0.15, 0.75, 0.2, 1) forwards;
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.12);
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-10px) translateX(0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(360px) translateX(var(--drift, 0px)) rotate(var(--spin, 900deg)) scale(0.85);
+    opacity: 0;
+  }
+}
+
+@keyframes message-fade {
+  to {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+}
+
+@media (max-width: 640px) {
+  .site-messages {
+    top: 70px;
+    width: calc(100vw - 16px);
+  }
+
+  .site-message {
+    border-radius: 14px;
+    padding: 14px 16px;
+    font-size: 0.98rem;
+  }
+}
+
+/* =========================================================
     Header / Navigation
    ========================================================= */
 .site-header {

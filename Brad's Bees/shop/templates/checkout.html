@@ -4,7 +4,7 @@
 {% block title %}Checkout - Brad's Bees{% endblock %}
 
 {% block css %}
-<link rel="stylesheet" href="{% static 'shop.css' %}">
+<link rel="stylesheet" href="{% static 'checkout.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -13,7 +13,6 @@
         <h1>Checkout</h1>
 
         <div class="checkout-grid">
-            <!-- Order Summary first -->
             <div class="order-summary">
                 <h2>Order Summary</h2>
                 <div class="summary-row">
@@ -31,24 +30,141 @@
                 <a href="{% url 'cart' %}" class="back-to-cart-btn">← Back to Cart</a>
             </div>
 
-            <!-- Form under summary -->
             <div class="checkout-form-card">
                 <h2>Billing Details</h2>
 
-                <form method="post">
-                    {% csrf_token %}
-                    {{ form.non_field_errors }}
+                {% if form.non_field_errors %}
+                <ul class="error-list">
+                    {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
 
-                    <div>{{ form.first_name.label_tag }} {{ form.first_name }} {{ form.first_name.errors }}</div>
-                    <div>{{ form.last_name.label_tag }} {{ form.last_name }} {{ form.last_name.errors }}</div>
-                    <div>{{ form.email.label_tag }} {{ form.email }} {{ form.email.errors }}</div>
-                    <div>{{ form.phone.label_tag }} {{ form.phone }} {{ form.phone.errors }}</div>
-                    <div>{{ form.address_line_1.label_tag }} {{ form.address_line_1 }} {{ form.address_line_1.errors }}</div>
-                    <div>{{ form.address_line_2.label_tag }} {{ form.address_line_2 }} {{ form.address_line_2.errors }}</div>
-                    <div>{{ form.city.label_tag }} {{ form.city }} {{ form.city.errors }}</div>
-                    <div>{{ form.state.label_tag }} {{ form.state }} {{ form.state.errors }}</div>
-                    <div>{{ form.zip_code.label_tag }} {{ form.zip_code }} {{ form.zip_code.errors }}</div>
-                    <div>{{ form.notes.label_tag }} {{ form.notes }} {{ form.notes.errors }}</div>
+                <form method="post" class="checkout-form">
+                    {% csrf_token %}
+
+                    <div class="form-row two-col">
+                        <div class="form-group">
+                            {{ form.first_name.label_tag }}
+                            {{ form.first_name }}
+                            {% if form.first_name.errors %}
+                            <ul class="error-list">
+                                {% for error in form.first_name.errors %}
+                                <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.last_name.label_tag }}
+                            {{ form.last_name }}
+                            {% if form.last_name.errors %}
+                            <ul class="error-list">
+                                {% for error in form.last_name.errors %}
+                                <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="form-row two-col">
+                        <div class="form-group">
+                            {{ form.email.label_tag }}
+                            {{ form.email }}
+                            {% if form.email.errors %}
+                            <ul class="error-list">
+                                {% for error in form.email.errors %}
+                                <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.phone.label_tag }}
+                            {{ form.phone }}
+                            {% if form.phone.errors %}
+                            <ul class="error-list">
+                                {% for error in form.phone.errors %}
+                                <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.address_line_1.label_tag }}
+                        {{ form.address_line_1 }}
+                        {% if form.address_line_1.errors %}
+                        <ul class="error-list">
+                            {% for error in form.address_line_1.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.address_line_2.label_tag }}
+                        {{ form.address_line_2 }}
+                        {% if form.address_line_2.errors %}
+                        <ul class="error-list">
+                            {% for error in form.address_line_2.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-row three-col">
+                        <div class="form-group">
+                            {{ form.city.label_tag }}
+                            {{ form.city }}
+                            {% if form.city.errors %}
+                            <ul class="error-list">
+                                {% for error in form.city.errors %}
+                                <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.state.label_tag }}
+                            {{ form.state }}
+                            {% if form.state.errors %}
+                            <ul class="error-list">
+                                {% for error in form.state.errors %}
+                                <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.zip_code.label_tag }}
+                            {{ form.zip_code }}
+                            {% if form.zip_code.errors %}
+                            <ul class="error-list">
+                                {% for error in form.zip_code.errors %}
+                                <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.notes.label_tag }}
+                        {{ form.notes }}
+                        {% if form.notes.errors %}
+                        <ul class="error-list">
+                            {% for error in form.notes.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
 
                     <button type="submit" class="checkout-btn">Place Order</button>
                 </form>
