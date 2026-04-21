@@ -1,7 +1,103 @@
-{% extends "index.html" %} {% block title %}Services - Brad's Bees{% endblock %}
+{% extends "index.html" %}
+{% load static %}
+{% block title %}Services - Brad's Bees{% endblock %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'services.css' %}">
+{% endblock %}
 {% block content %}
-<section>
-  <h2>Our Services</h2>
-  <p>Explore bee removal, relocation, and consultation services.</p>
-</section>
+<!-- HERO SECTION -->
+<div class="service-hero-centered">
+  <h1>Professional Bee Removal</h1>
+  <p>
+    Safe, humane, and effective bee removal services. We relocate bees without harming them, protecting both your property and these vital pollinators.
+  </p>
+  <div class="service-hero-img-centered">
+    <img src="{% static 'images/Bee_on_flower.png' %}" alt="Bee on flower" />
+  </div>
+</div>
+
+<!-- HIGHLIGHTS SECTION WITH ORANGE CIRCLE EMOJI ICONS -->
+<div class="service-highlights">
+  <div class="highlight-card">
+    <span class="highlight-icon-wrap">
+      <img src="{% static 'images/clock.svg' %}" alt="24/7 Emergency" class="highlight-icon-img">
+    </span>
+    <h3>24/7 Emergency</h3>
+    <p>Available around the clock for urgent situations</p>
+  </div>
+  <div class="highlight-card">
+    <span class="highlight-icon-wrap">
+      <img src="{% static 'images/shield.svg' %}" alt="Fully Insured" class="highlight-icon-img">
+    </span>
+    <h3>Fully Insured</h3>
+    <p>Insured for your peace of mind</p>
+  </div>
+  <div class="highlight-card">
+    <span class="highlight-icon-wrap">
+      <img src="{% static 'images/check.svg' %}" alt="Humane Methods" class="highlight-icon-img">
+    </span>
+    <h3>Humane Methods</h3>
+    <p>Bees are safely relocated, not exterminated</p>
+  </div>
+  <div class="highlight-card">
+    <span class="highlight-icon-wrap">
+      <img src="{% static 'images/medal.svg' %}" alt="8+ Years Experience" class="highlight-icon-img">
+    </span>
+    <h3>8+ Years Experience</h3>
+    <p>Trusted expertise in bee management</p>
+  </div>
+</div>
+
+<div class="removal-process">
+  <h2>Our Removal Process</h2>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-number">1</div>
+      <h4>Inspection</h4>
+      <p>
+        We assess the hive location, size, and best removal method for your
+        specific situation.
+      </p>
+    </div>
+    <div class="process-step">
+      <div class="step-number">2</div>
+      <h4>Free Estimate</h4>
+      <p>
+        We provide a transparent, no-obligation quote outlining the scope of
+        work and guaranteed pricing.
+      </p>
+    </div>
+    <div class="process-step">
+      <div class="step-number">3</div>
+      <h4>Safe Removal</h4>
+      <p>
+        Using specialized equipment, we carefully remove the bees and relocate
+        them to a safe environment.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="removal-services">
+  <h2>Removal Services</h2>
+  <div class="removal-services-card">
+    <h3>Bee Removal Services</h3>
+    <h4>On Request</h4>
+    <ul>
+      <li>✔️ Safe, humane bee relocation</li>
+      <li>✔️ 24/7 emergency service available</li>
+      <li>✔️ All locations and hive sizes</li>
+      <li>✔️ Free estimates</li>
+    </ul>
+  </div>
+</div>
+
+<div class="service-contact">
+  <h2>Need Immediate Bee Removal?</h2>
+  <p>Call us now for a free quote and same-day service</p>
+  <div class="contact-actions">
+    <a class="call-btn" href="tel:985-612-0241">📞 985-612-0241</a>
+    <a class="msg-btn" href="/contact">Send Us a Message</a>
+  </div>
+</div>
 {% endblock %}
