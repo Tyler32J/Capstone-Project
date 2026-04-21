@@ -212,9 +212,22 @@ body {
     cursor: pointer;
 }
 .call-btn {
-    background: #f6a019;
-    color: #fff;
+  color: #fff;               
+  background: #d98500;        
+  border-radius: 14px;
+  padding: 16px 32px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.2em;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
 }
+
+.call-btn .footer-contact-icon {
+  stroke: #fff;               /* Ensures the SVG stroke is white */
+}
+
 .call-btn:hover {
     background: #c97a13;
 }
