@@ -1,7 +1,8 @@
 body {
-font-family: 'Montserrat', Arial, sans-serif;
+    font-family: 'Montserrat', Arial, sans-serif;
     background: #fffbe9;
 }
+
 /* --- HERO SECTION  --- */
 .service-hero-centered {
     background: #fffbe9;
@@ -40,6 +41,7 @@ font-family: 'Montserrat', Arial, sans-serif;
     background: #fff;
 }
 
+/* --- HIGHLIGHTS --- */
 .service-highlights {
     display: flex;
     justify-content: center;
@@ -55,10 +57,23 @@ font-family: 'Montserrat', Arial, sans-serif;
     flex: 1;
     min-width: 180px;
 }
-.highlight-icon {
-    font-size: 2.2rem;
-    color: #c97a13;
-    margin-bottom: 0.5rem;
+.highlight-icon-wrap {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #c97a13;
+    margin: 0 auto 1rem auto;
+    z-index: 1;
+    overflow: hidden;
+    box-shadow: 0 2px 8px #0001;
+}
+.highlight-icon-img {
+    width: 100px;
+    height: 100px;
+    display: block;
 }
 .highlight-card h3 {
     font-size: 1.2rem;
@@ -70,6 +85,7 @@ font-family: 'Montserrat', Arial, sans-serif;
     font-size: 1rem;
 }
 
+/* --- REMOVAL PROCESS --- */
 .removal-process {
     background: #fff;
     border-radius: 1.5rem;
@@ -107,6 +123,7 @@ font-family: 'Montserrat', Arial, sans-serif;
     font-size: 1rem;
 }
 
+/* --- REMOVAL SERVICES CARD --- */
 .removal-services {
     background: #181d26;
     color: #fff;
@@ -119,18 +136,20 @@ font-family: 'Montserrat', Arial, sans-serif;
     background: #232a36;
     border-radius: 1rem;
     margin: 0 auto;
-    max-width: 400px;
+    max-width: 600px;
     padding: 2rem 1.5rem;
     box-shadow: 0 2px 16px #0002;
 }
 .removal-services-card h3 {
-    color: #ffc13b;
-    font-size: 1.3rem;
+    color: #f6a019;
+    font-size: 1.7rem;
     margin-bottom: 0.5rem;
+    font-weight: 700;
 }
 .removal-services-card h4 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
 }
 .removal-services-card ul {
     list-style: none;
@@ -139,14 +158,22 @@ font-family: 'Montserrat', Arial, sans-serif;
 }
 .removal-services-card li {
     text-align: left;
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
     color: #fff;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.7rem;
+}
+.check-icon {
+    color: #f6a019;
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-right: 0.5rem;
+    display: inline-block;
 }
 
+/* --- CONTACT SECTION (BOTTOM) --- */
 .service-contact {
     background: #fffbe9;
     border-radius: 1.5rem;
@@ -158,10 +185,13 @@ font-family: 'Montserrat', Arial, sans-serif;
 .service-contact h2 {
     font-size: 2rem;
     margin-bottom: 0.5rem;
+    color: #181d26;
+    font-weight: 600;
 }
 .service-contact p {
-    font-size: 1.1rem;
+    font-size: 1.25rem;
     margin-bottom: 1.5rem;
+    color: #232b3b;
 }
 .contact-actions {
     display: flex;
@@ -169,21 +199,24 @@ font-family: 'Montserrat', Arial, sans-serif;
     gap: 1.5rem;
 }
 .call-btn, .msg-btn {
-    display: inline-block;
-    padding: 0.8rem 2rem;
-    border-radius: 0.5rem;
-    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2.5rem;
+    border-radius: 0.7rem;
+    font-size: 1.3rem;
     font-weight: 600;
     text-decoration: none;
     transition: background 0.2s, color 0.2s;
+    border: none;
+    cursor: pointer;
 }
 .call-btn {
-    background: #c97a13;
+    background: #f6a019;
     color: #fff;
-    margin-right: 0.5rem;
 }
 .call-btn:hover {
-    background: #a05e0e;
+    background: #c97a13;
 }
 .msg-btn {
     background: #181d26;
@@ -193,40 +226,7 @@ font-family: 'Montserrat', Arial, sans-serif;
     background: #232a36;
 }
 
-.highlight-icon-wrap {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #c97a13;
-  margin: 0 auto 1rem auto;
-  z-index: 1;
-  overflow: hidden;
-  box-shadow: 0 2px 8px #0001;
-}
-.highlight-icon-img {
-  width: 36px;
-  height: 36px;
-  display: block;
-}
-
-.highlight-icon-css {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: #c97a13;
-  color: #fff;
-  font-size: 2.2rem;
-  margin: 0 auto 1rem auto;
-  box-shadow: 0 2px 8px #0001;
-  line-height: 1;
-}
-
+/* --- RESPONSIVE --- */
 @media (max-width: 900px) {
     .service-hero-centered {
         padding: 2rem 0 1rem 0;

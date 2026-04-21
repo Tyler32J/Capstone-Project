@@ -68,6 +68,7 @@
   line-height: 1.2;
   font-weight: 800;
   color: var(--edu-white);
+  font-family: 'Montserrat', Arial, sans-serif; /* Add this line */
 }
 
 .edu-hero-subtitle {
@@ -308,7 +309,7 @@
   justify-content: center;
   height: 3.5rem;
   min-width: 0;
-  padding-left: 4.5rem; /* icon width + spacing */
+  padding-left: 4.5rem; 
   padding-right: 1.5rem;
   box-sizing: border-box;
 }
@@ -332,9 +333,11 @@
 }
 
 .edu-btn-dark {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background: var(--edu-navy);
   color: var(--edu-white);
   box-shadow: 0 6px 14px rgba(10, 18, 35, 0.22);
+  border-radius: 0.7rem;
 }
 
 .edu-btn-light {
@@ -342,6 +345,55 @@
   color: var(--edu-amber-dark);
   box-shadow: 0 6px 14px rgba(10, 18, 35, 0.14);
 }
+
+.edu-btn-msg {
+  background: #fff;
+  color: #c97a13;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-weight: 600;
+  font-size: 1.3rem;
+  border-radius: 0.7rem;
+  padding: 1rem 2.5rem;
+  box-shadow: 0 2px 16px #0001;
+  border: none;
+  gap: 0.7em;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+}
+.edu-btn-msg:hover {
+  background: #f6a019;
+  color: #fff;
+}
+.edu-btn-msg img {
+  width: 1.5em;
+  height: 1.5em;
+  margin-right: 0.7em;
+  display: inline-block;
+  position: static;
+}
+
+.edu-btn-dark:hover {
+  background: #fff !important;
+  color: #c97a13 !important;
+  box-shadow: 0 2px 16px #0001;
+}
+.edu-btn-dark:hover * {
+  color: #c97a13 !important;
+}
+
+.edu-btn-dark,
+.edu-btn-dark * {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
+  font-size: 1.3rem !important;
+  font-weight: 600 !important;
+}
+
+
+
+
 
 /* Responsive */
 @media (max-width: 1080px) {
