@@ -57,7 +57,11 @@
       {% for message in messages %}
       <div
         class="site-message {{ message.tags }}"
-        style="{% if 'success' in message.tags %}background: linear-gradient(135deg, #27ae60 0%, #1f8a4d 100%); color: #ffffff; border: 2px solid rgba(255, 255, 255, 0.25);{% elif 'warning' in message.tags %}background: linear-gradient(135deg, #d98500 0%, #b86a00 100%); color: #ffffff; border: 2px solid rgba(255, 255, 255, 0.18);{% endif %}"
+        {% if 'success' in message.tags %}
+        style="background: linear-gradient(135deg, #27ae60 0%, #1f8a4d 100%); color: #ffffff; border: 2px solid rgba(255, 255, 255, 0.25);"
+        {% elif 'warning' in message.tags %}
+        style="background: linear-gradient(135deg, #d98500 0%, #b86a00 100%); color: #ffffff; border: 2px solid rgba(255, 255, 255, 0.18);"
+        {% endif %}
       >
         <span class="site-message-text">{{ message }}</span>
       </div>

@@ -3,6 +3,41 @@ body {
     background: #fffbe9;
 }
 
+/* --- SERVICE TABS (under navbar) --- */
+.service-tabs {
+  display: flex;
+  gap: 0;
+  background: #f6f7fa;
+  border-radius: 18px;
+  margin: 32px auto 0 auto;
+  max-width: 700px;
+  padding: 8px 0;
+  justify-content: center;
+}
+
+.service-tabs .tab {
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 1.2rem;
+  color: #444;
+  padding: 12px 32px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.service-tabs .tab.active {
+  background: #181c26;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.service-tabs .tab:not(.active):hover {
+  background: #ececec;
+}
+
 /* --- HERO SECTION  --- */
 .service-hero-centered {
     background: #fffbe9;
@@ -252,4 +287,13 @@ body {
         flex-direction: column;
         gap: 1rem;
     }
+}
+
+/* Responsive for service tabs */
+@media (max-width: 900px) {
+  .service-tabs {
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px 0;
+  }
 }
