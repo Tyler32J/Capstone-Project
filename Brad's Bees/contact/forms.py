@@ -14,7 +14,10 @@ phone_validator = RegexValidator(
 )
 
 class SubmissionForm(forms.ModelForm):
-    images = forms.ImageField(required=False)
+    images = forms.ImageField(
+        required=False,
+        widget=forms.ClearableFileInput(attrs={'multiple': True})
+    )
 
     class Meta:
         model = Submission
@@ -35,6 +38,6 @@ class SubmissionForm(forms.ModelForm):
         'placeholder': 'XXX-XXX-XXXX'
     }))
     service = forms.ChoiceField(choices=Submission.SERVICE_CHOICES)#(max_length=20, required=True)
-    message = forms.CharField(max_length=20, required=True, widget=forms.TextInput(attrs={
+    message = forms.CharField(max_length=999999, required=True, widget=forms.Textarea(attrs={
         'placeholder': 'Tell us about your needs...'
     }))

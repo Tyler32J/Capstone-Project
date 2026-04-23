@@ -24,7 +24,7 @@ class Submission(models.Model):
         choices=SERVICE_CHOICES,
         default="bee_removal"
     )
-    message = models.TextField(max_length=999)
+    message = models.TextField(max_length=999999)
     
 
 

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 from django.conf import settings
 from django.contrib import messages
 from .forms import *
@@ -31,13 +31,21 @@ def contact_view(request):
 
             """
 
-            send_mail(
+            message += "\nAttached images:\n"
+            for f in request.FILES.getlist('images'):
+                message += f"- {f.name}\n"
+
+            email = EmailMessage(
                 subject,
                 message,
                 settings.DEFAULT_FROM_EMAIL,
                 ['business@example.com'], # change to Brad's email
-                fail_silently = False,
             )
+
+            for f in request.FILES.getlist('images'):
+                email.attach(f.name, f.read(), f.content_type)
+
+            email.send()
 
             messages.success(request, "Form submitted successfully!")
 
