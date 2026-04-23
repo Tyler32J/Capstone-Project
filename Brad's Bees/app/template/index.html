@@ -1,13 +1,14 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  {% load static %}
   <!-- ======================================================
        Document Meta
        ====================================================== -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
   <!-- ======================================================
        Document Title (overridable in child templates)
        ====================================================== -->
@@ -17,6 +18,13 @@
        Global Styles + Optional Page-Specific Styles
        ====================================================== -->
   <link rel="stylesheet" href="{% static 'index.css' %}">
+  <!-- ======================================================
+       Favicon Styles
+       ====================================================== -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
   {% block css %}{% endblock %}
 </head>
 <body>
@@ -27,7 +35,7 @@
     <div class="header-inner">
       <!-- Brand / Logo -->
       <a href="{% url 'home' %}" class="brand">
-        <img src='{% static "images/Brads_New_logo_2.png" %}' alt="Brad's Bees logo" class="brand-logo">
+        <img src="{% static 'images/Brads_New_logo_2.png' %}" alt="Brad's Bees logo" class="brand-logo">
         <span class="brand-name">Brad's Bees</span>
       </a>
 
@@ -52,6 +60,25 @@
        Main Content (injected by child templates)
        ====================================================== -->
   <main>
+    {% if messages %}
+    <div class="site-messages" aria-live="polite" aria-atomic="true">
+      {% for message in messages %}
+      <div
+        class="site-message {{ message.tags }}"
+        {% if 'success' in message.tags %}
+        style="background: linear-gradient(135deg, #27ae60 0%, #1f8a4d 100%); color: #ffffff; border: 2px solid rgba(255, 255, 255, 0.25);"
+        {% elif 'warning' in message.tags %}
+        style="background: linear-gradient(135deg, #d98500 0%, #b86a00 100%); color: #ffffff; border: 2px solid rgba(255, 255, 255, 0.18);"
+        {% endif %}
+      >
+        <span class="site-message-text">{{ message }}</span>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="confetti-layer" aria-hidden="true"></div>
+
     {% block content %}{% endblock %}
   </main>
 
@@ -62,7 +89,7 @@
     <!-- Footer: Brand Summary -->
     <div>
       <div class="footer-brand-row">
-        <img src='{% static "images/Brads_New_logo_2.png" %}' alt="Brad's Bees logo" class="footer-logo">
+        <img src="{% static 'images/Brads_New_logo_2.png' %}" alt="Brad's Bees logo" class="footer-logo">
         <h3>Brad's Bees</h3>
       </div>
       <p>Professional bee removal services and premium honey sales.</p>
@@ -112,11 +139,46 @@
       </div>
 
       <h4 class="footer-community-title">Community Links</h4>
-      <p>Hives for Heroes</p>
+      <p class="hives_for_heros"><a href="https://hivesforheroes.org/pages/support" target="_blank" >Hives for Heroes</a></p>
     </div>
 
     <!-- Footer: Copyright -->
     <p>&copy; 2026 Brad's Bees. All rights reserved.</p>
   </footer>
+
+  <script>
+    (function () {
+      const successMessage = document.querySelector('.site-message.success');
+      if (!successMessage) return;
+
+      const confettiLayer = document.querySelector('.confetti-layer');
+      if (!confettiLayer) return;
+
+      const burstCount = 60;
+      const colors = ['#d98500', '#27ae60', '#ffd166', '#ffffff', '#7dd3fc'];
+
+      for (let index = 0; index < burstCount; index += 1) {
+        const piece = document.createElement('span');
+        piece.className = 'confetti-piece';
+        const leftOffset = 50 + (Math.random() * 48 - 24);
+        piece.style.left = `${leftOffset}%`;
+        piece.style.top = `${70 + Math.random() * 24}px`;
+        piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        piece.style.width = `${6 + Math.random() * 10}px`;
+        piece.style.height = `${8 + Math.random() * 14}px`;
+        piece.style.borderRadius = Math.random() > 0.5 ? '999px' : '2px';
+        piece.style.animationDelay = `${Math.random() * 0.2}s`;
+        piece.style.setProperty('--drift', `${(Math.random() * 260 - 130).toFixed(0)}px`);
+        piece.style.setProperty('--spin', `${900 + Math.random() * 900}deg`);
+        confettiLayer.appendChild(piece);
+
+        window.setTimeout(() => piece.remove(), 4600);
+      }
+
+      window.setTimeout(() => {
+        successMessage.closest('.site-messages')?.classList.add('fade-out');
+      }, 5600);
+    })();
+  </script>
 </body>
 </html>

@@ -1,93 +1,227 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
-from django.views.decorators.http import require_http_methods
 from decimal import Decimal
 from django.contrib import messages
+from django.conf import settings
+from django.core.mail import send_mail
 from django.db import transaction
 from .forms import CheckoutForm
-from .models import Product, Order, OrderItem
+from .models import Product, Order, OrderItem, Cart, Item
+
+
+def _get_or_create_cart(request):
+    """Return cart for current user (if authenticated) or current guest session."""
+    if request.user.is_authenticated:
+        cart, _ = Cart.objects.get_or_create(
+            user=request.user,
+            defaults={"session_key": request.session.session_key},
+        )
+        return cart
+
+    if not request.session.session_key:
+        request.session.create()
+
+    cart, _ = Cart.objects.get_or_create(
+        user=None,
+        session_key=request.session.session_key,
+    )
+    return cart
+
+
+def _migrate_legacy_session_cart(request, cart):
+    """Move old session-based cart payload into DB cart and clear legacy key."""
+    legacy_cart = request.session.get("cart", {})
+    if not legacy_cart:
+        return
+
+    for product_id, payload in legacy_cart.items():
+        try:
+            product = Product.objects.get(id=int(product_id))
+        except (Product.DoesNotExist, ValueError, TypeError):
+            continue
+
+        quantity = 1
+        if isinstance(payload, dict):
+            quantity = int(payload.get("quantity", 1))
+        elif isinstance(payload, int):
+            quantity = payload
+
+        if quantity <= 0:
+            continue
+
+        item, created = Item.objects.get_or_create(
+            cart=cart,
+            product=product,
+            defaults={"quantity": quantity},
+        )
+        if not created:
+            item.quantity += quantity
+            item.save(update_fields=["quantity"])
+
+    request.session["cart"] = {}
+    request.session.modified = True
+
+
+def _build_cart_context(cart):
+    """Build cart rows and totals for templates and checkout."""
+    cart_items = []
+    subtotal = Decimal("0")
+    item_rows = cart.items.select_related("product").all()
+
+    for row in item_rows:
+        product = row.product
+        unit_price = product.price or Decimal("0")
+        item_total = unit_price * row.quantity
+        subtotal += item_total
+        cart_items.append({
+            "id": product.id,
+            "name": product.name,
+            "variant": product.variant or "",
+            "price": float(unit_price),
+            "quantity": row.quantity,
+            "image": product.image,
+            "total": float(item_total),
+            "product": product,
+            "unit_price": unit_price,
+            "line_total": item_total,
+        })
+
+    shipping = Decimal("0") if subtotal > 50 else Decimal("5")
+    total = subtotal + shipping
+    cart_count = sum(item["quantity"] for item in cart_items)
+
+    return {
+        "cart_items": cart_items,
+        "subtotal": subtotal,
+        "shipping": shipping,
+        "total": total,
+        "cart_count": cart_count,
+    }
+
+
+def _send_order_notification(order, cart_items):
+    """Email order details to business inbox and customer email when available."""
+    email_user = (getattr(settings, "EMAIL_HOST_USER", "") or "").strip()
+    email_password = (getattr(settings, "EMAIL_HOST_PASSWORD", "") or "").strip()
+    default_from = (getattr(settings, "DEFAULT_FROM_EMAIL", "") or "").strip()
+
+    if not email_user or not email_password or not default_from:
+        return "not_configured"
+
+    primary_recipient = getattr(settings, "ORDER_NOTIFICATION_EMAIL", None)
+    recipients = []
+
+    if primary_recipient:
+        recipients.append(primary_recipient)
+    if order.email:
+        recipients.append(order.email)
+
+    recipients = list(dict.fromkeys(recipients))
+    if not recipients:
+        return "skipped"
+
+    item_lines = []
+    for item in cart_items:
+        product = item["product"]
+        variant = f" ({product.variant})" if product.variant else ""
+        item_lines.append(
+            f"- {product.name}{variant} x {item['quantity']} @ ${item['unit_price']:.2f} = ${item['line_total']:.2f}"
+        )
+
+    message = "\n".join([
+        f"New order received: #{order.id}",
+        "",
+        "Customer:",
+        f"{order.first_name} {order.last_name}",
+        f"Email: {order.email}",
+        f"Phone: {order.phone}",
+        "",
+        "Shipping Address:",
+        f"{order.address_line_1}",
+        f"{order.address_line_2}" if order.address_line_2 else "",
+        f"{order.city}, {order.state} {order.zip_code}",
+        "",
+        "Items:",
+        *item_lines,
+        "",
+        f"Subtotal: ${order.subtotal:.2f}",
+        f"Shipping: ${order.shipping:.2f}",
+        f"Total: ${order.total:.2f}",
+        "",
+        f"Notes: {order.notes or 'None'}",
+    ])
+
+    try:
+        send_mail(
+            subject=f"New Brad's Bees Order #{order.id}",
+            message=message,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=recipients,
+            fail_silently=False,
+        )
+        return "sent"
+    except Exception:
+        return "failed"
 
 def store_view(request):
     """Display all products in the shop"""
+    cart = _get_or_create_cart(request)
+    _migrate_legacy_session_cart(request, cart)
+    cart_context = _build_cart_context(cart)
+
     products = Product.objects.all()
     context = {
         'products': products,
-        'cart_count': len(request.session.get('cart', {}))
+        'cart_count': cart_context['cart_count']
     }
     return render(request, 'shop.html', context)
 
 def add_to_cart(request, product_id):
-    """Add a product to the shopping cart (session-based)"""
+    """Add a product to the shopping cart (DB-backed)."""
     product = get_object_or_404(Product, id=product_id)
-    
-    if 'cart' not in request.session:
-        request.session['cart'] = {}
-    
-    cart = request.session['cart']
-    product_key = str(product_id)
-    
-    if product_key in cart:
-        cart[product_key]['quantity'] += 1
-    else:
-        cart[product_key] = {
-            'name': product.name,
-            'variant': product.variant or '',
-            'price': float(product.price) if product.price else 0,
-            'quantity': 1,
-            'image': product.image.url if product.image else ''
-        }
-    
-    request.session.modified = True
+    cart = _get_or_create_cart(request)
+    _migrate_legacy_session_cart(request, cart)
+
+    cart_item, created = Item.objects.get_or_create(
+        cart=cart,
+        product=product,
+        defaults={'quantity': 1},
+    )
+    if not created:
+        cart_item.quantity += 1
+        cart_item.save(update_fields=['quantity'])
+
+    cart_context = _build_cart_context(cart)
     
     # Return JSON if AJAX request, otherwise redirect
     if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
         return JsonResponse({
             'success': True,
-            'cart_count': sum(item['quantity'] for item in cart.values())
+            'cart_count': cart_context['cart_count']
         })
     
     return redirect('cart')
 
 def cart_view(request):
     """Display the shopping cart"""
-    cart = request.session.get('cart', {})
-    cart_items = []
-    subtotal = Decimal('0')
-    
-    for product_id, item in cart.items():
-        item_total = Decimal(str(item['price'])) * item['quantity']
-        subtotal += item_total
-        cart_items.append({
-            'id': product_id,
-            'name': item['name'],
-            'variant': item['variant'],
-            'price': item['price'],
-            'quantity': item['quantity'],
-            'image': item['image'],
-            'total': float(item_total)
-        })
-    
-    # Calculate shipping (example: free over $50, $5 otherwise)
-    shipping = Decimal('0') if subtotal > 50 else Decimal('5')
-    total = subtotal + shipping
+    cart = _get_or_create_cart(request)
+    _migrate_legacy_session_cart(request, cart)
+    cart_context = _build_cart_context(cart)
     
     context = {
-        'cart_items': cart_items,
-        'subtotal': f"{subtotal:.2f}",
-        'shipping': f"{shipping:.2f}",
-        'total': f"{total:.2f}",
-        'cart_count': len(cart)
+        'cart_items': cart_context['cart_items'],
+        'subtotal': f"{cart_context['subtotal']:.2f}",
+        'shipping': f"{cart_context['shipping']:.2f}",
+        'total': f"{cart_context['total']:.2f}",
+        'cart_count': cart_context['cart_count']
     }
     return render(request, 'cart.html', context)
 
 def remove_from_cart(request, product_id):
     """Remove an item from the shopping cart"""
-    cart = request.session.get('cart', {})
-    product_key = str(product_id)
-    
-    if product_key in cart:
-        del cart[product_key]
-        request.session.modified = True
+    cart = _get_or_create_cart(request)
+    _migrate_legacy_session_cart(request, cart)
+    Item.objects.filter(cart=cart, product_id=product_id).delete()
     
     return redirect('cart')
 
@@ -95,48 +229,28 @@ def update_cart(request, product_id):
     """Update the quantity of an item in the cart"""
     if request.method == 'POST':
         quantity = int(request.POST.get('quantity', 1))
-        cart = request.session.get('cart', {})
-        product_key = str(product_id)
-        
-        if product_key in cart:
+        cart = _get_or_create_cart(request)
+        _migrate_legacy_session_cart(request, cart)
+
+        cart_item = Item.objects.filter(cart=cart, product_id=product_id).first()
+        if cart_item:
             if quantity > 0:
-                cart[product_key]['quantity'] = quantity
+                cart_item.quantity = quantity
+                cart_item.save(update_fields=['quantity'])
             else:
-                del cart[product_key]
-            request.session.modified = True
+                cart_item.delete()
     
     return redirect('cart')
 
 # --- Checkout View ---
 def checkout_view(request):
     """Display the checkout page."""
-    cart = request.session.get("cart", {})
-    cart_items = []
-    subtotal = Decimal("0.00")
+    cart = _get_or_create_cart(request)
+    _migrate_legacy_session_cart(request, cart)
+    cart_context = _build_cart_context(cart)
 
-    for product_id, item in cart.items():
-        try:
-            product = Product.objects.get(id=int(product_id))
-
-            if isinstance(item, dict):
-                quantity = int(item.get("quantity", 1))
-                unit_price = Decimal(str(item.get("price", product.price)))
-            else:
-                quantity = int(item)
-                unit_price = Decimal(str(product.price))
-
-            line_total = unit_price * quantity
-            subtotal += line_total
-
-            cart_items.append({
-                "product": product,
-                "quantity": quantity,
-                "unit_price": unit_price,
-                "line_total": line_total,
-            })
-        except (Product.DoesNotExist, ValueError, TypeError):
-            continue
-
+    cart_items = cart_context["cart_items"]
+    subtotal = cart_context["subtotal"]
     shipping = Decimal("0.00")
     total = subtotal + shipping
 
@@ -174,9 +288,22 @@ def checkout_view(request):
                         line_total=item["line_total"],
                     )
 
+            email_status = _send_order_notification(order, cart_items)
+
+            cart.items.all().delete()
             request.session["cart"] = {}
             request.session.modified = True
-            messages.success(request, f"Order #{order.id} placed successfully.")
+            messages.success(
+                request,
+                "Thank you for your Order! We will receive a message/email in the following 24 hours.",
+            )
+            if email_status == "not_configured":
+                messages.warning(
+                    request,
+                    "Order saved, but email is not configured yet. Add EMAIL_HOST_USER and EMAIL_HOST_PASSWORD in your .env file.",
+                )
+            if email_status == "failed":
+                messages.warning(request, "Order saved, but email notification could not be sent.")
             return redirect("shop")
     else:
         form = CheckoutForm()
@@ -187,5 +314,5 @@ def checkout_view(request):
         "subtotal": subtotal,
         "shipping": shipping,
         "total": total,
-        "cart_count": len(cart),
+        "cart_count": cart_context["cart_count"],
     })

@@ -24,13 +24,31 @@
             {% for product in products %}
             <div class="product-card">
                 {% if product.image %}
-                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
+                {% elif product.name == "Honey" and product.variant == "Gallon" %}
+                    <img src="{% static 'images/Gallon_of_Honey.png' %}" alt="Honey Gallon" class="product-image product-image-tall">
+                {% elif product.name == "Honey" and product.variant == "Quart" %}
+                    <img src="{% static 'images/Quart_of_Honey.png' %}" alt="Honey Quart" class="product-image product-image-tall">
+                {% elif product.name == "Honey" and product.variant == "Pint" %}
+                    <img src="{% static 'images/Pint_of_Honey.png' %}" alt="Honey Pint" class="product-image product-image-pint">
+                {% elif product.name == "Pure Beeswax" %}
+                    <img src="{% static 'images/Beeswax.png' %}" alt="Pure Beeswax" class="product-image">
+                {% elif product.name == "Beeswax Candles" %}
+                    <img src="{% static 'images/Beeswax_Candles.png' %}" alt="Beeswax Candle" class="product-image">
                 {% else %}
-                <div class="product-image-placeholder">No Image</div>
+                    <div class="product-image-placeholder">No Image</div>
                 {% endif %}
                 
                 <h3>{{ product.name }}</h3>
                 {% if product.variant %}<p class="variant">{{ product.variant }}</p>{% endif %}
+
+                <div class="product-badges">
+                    <span class="product-badge">Small Batch</span>
+                    <span class="product-badge">Local</span>
+                    {% if product.stock > 0 %}
+                    <span class="product-badge product-badge-stock">In Stock</span>
+                    {% endif %}
+                </div>
                 
                 <!-- Star Rating -->
                 <div class="star-rating">
@@ -44,7 +62,7 @@
                     <span class="rating-value">({{ product.rating }})</span>
                 </div>
                 
-                <p class="description">{{ product.description }}</p>
+                <p class="description" title="{{ product.description }}">{{ product.description }}</p>
                 
                 <div class="product-footer">
                     {% if product.price %}

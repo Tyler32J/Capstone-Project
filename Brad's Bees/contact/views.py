@@ -39,7 +39,7 @@ def contact_view(request):
                 subject,
                 message,
                 settings.DEFAULT_FROM_EMAIL,
-                ['business@example.com'], # change to Brad's email
+                ['bradbessetti@gmail.com'], # change to Brad's email
             )
 
             for f in request.FILES.getlist('images'):

@@ -1,3 +1,126 @@
+.removal-services-card ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-left: 0;
+  list-style: none;
+  gap: 10px;
+}
+
+.removal-services-card li {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+/* ===================== Service Highlights & Process ===================== */
+.service-highlights {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 40px 0 0 0;
+  background: #fdfbee;
+  padding: 40px 0 0 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.highlight-card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+  padding: 32px 36px 24px 36px;
+  min-width: 320px;
+  max-width: 435px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.highlight-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #d9850022;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  margin-bottom: 18px;
+}
+
+.highlight-icon-img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+
+.removal-process {
+  background: #fdfbee;
+  border-radius: 24px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+  margin: 40px auto 0 auto !important;
+  padding: 48px 0 32px 0;
+  max-width: 90vw;
+}
+
+.removal-process h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #101b34;
+  margin-bottom: 36px;
+}
+
+.process-steps {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-top: 0;
+}
+
+.process-step {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+  padding: 36px 28px 28px 28px;
+  min-width: 320px;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.step-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #d98500;
+  margin-bottom: 10px;
+}
+
+.process-step h4 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #101b34;
+  margin-bottom: 10px;
+}
+
+.process-step p {
+  color: #535d6f;
+  text-align: center;
+  font-size: 1.05rem;
+}
+
+@media (max-width: 900px) {
+  .service-highlights,
+  .process-steps {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+}
 /* =========================================================
     Design Tokens
    ========================================================= */
@@ -45,6 +168,105 @@ main {
 }
 
 /* =========================================================
+    Global Messages / Checkout Confirmation
+   ========================================================= */
+.site-messages {
+  position: fixed;
+  top: 78px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1300;
+  width: min(720px, calc(100vw - 24px));
+  padding: 0;
+}
+
+.site-message {
+  border-radius: 16px;
+  padding: 16px 18px;
+  box-shadow: 0 14px 30px rgb(0 0 0 / 0.12);
+  margin-bottom: 0;
+  backdrop-filter: blur(8px);
+  text-align: center;
+  font-size: 1.02rem;
+}
+
+.site-message.success {
+  background: linear-gradient(135deg, #27ae60 0%, #1f8a4d 100%);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.site-message.warning {
+  background: linear-gradient(135deg, #d98500 0%, #b86a00 100%);
+  color: #fff;
+}
+
+.site-message-text {
+  display: block;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.site-messages.fade-out {
+  animation: message-fade 0.35s ease forwards;
+}
+
+.confetti-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 1500;
+}
+
+.confetti-piece {
+  position: absolute;
+  top: 0;
+  width: 10px;
+  height: 16px;
+  border-radius: 999px;
+  pointer-events: none;
+  z-index: 1500;
+  animation: confetti-fall 4.3s cubic-bezier(0.15, 0.75, 0.2, 1) forwards;
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.12);
+}
+
+
+@keyframes confetti-fall {
+  100% {
+    transform: translateY(360px) translateX(var(--drift, 0px)) rotate(var(--spin, 900deg)) scale(0.85);
+    opacity: 0;
+  }
+}
+
+/* Underline all links and contact info on hover */
+a:hover,
+.footer-contact-row a:hover,
+.main-nav a:hover {
+  text-decoration: underline;
+}
+
+@keyframes message-fade {
+  to {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+}
+
+@media (max-width: 640px) {
+  .site-messages {
+    top: 70px;
+    width: calc(100vw - 16px);
+  }
+
+  .site-message {
+    border-radius: 14px;
+    padding: 14px 16px;
+    font-size: 0.98rem;
+  }
+}
+
+/* =========================================================
     Header / Navigation
    ========================================================= */
 .site-header {
@@ -75,9 +297,11 @@ main {
 }
 
 .brand-logo {
-  width: 72px;
-  height: 72px;
+  width: 140px;   
+  height: 140px;
   object-fit: contain;
+  margin-top: -24px;  
+  margin-bottom: -24px;
 }
 
 .brand-name {
@@ -155,10 +379,11 @@ footer > div:first-child {
 }
 
 .footer-logo {
-  width: 100px;
-  height: 100px;
+  width: 160px;  
+  height: 160px;
   object-fit: contain;
-  flex-shrink: 0;
+  margin-top: -20px; 
+  margin-bottom: -20px;
 }
 
 footer h3 {
@@ -215,6 +440,9 @@ footer > p:last-child {
   padding-top: 10px;
   border-top: 1px solid rgba(255, 255, 255, 0.07);
   text-align: center;
+}
+.hives_for_heros:hover{
+  text-decoration: underline;
 }
 
 /* =========================================================

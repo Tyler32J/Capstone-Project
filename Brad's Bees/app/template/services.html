@@ -1,7 +1,155 @@
-{% extends "index.html" %} {% block title %}Services - Brad's Bees{% endblock %}
+{% extends "index.html" %}
+{% load static %}
+{% block title %}Services - Brad's Bees{% endblock %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'services.css' %}">
+{% endblock %}
 {% block content %}
-<section>
-  <h2>Our Services</h2>
-  <p>Explore bee removal, relocation, and consultation services.</p>
-</section>
+
+
+<!-- SERVICE TABS -->
+<div class="service-tabs" id="serviceTabs">
+  <div class="tab-indicator" id="tabIndicator"></div>
+  <button class="tab active" data-tab="removal">Bee Removal</button>
+  <button class="tab" data-tab="pollination">Pollination Service</button>
+  <button class="tab" data-tab="setup">Hive Setup &amp; Management</button>
+</div>
+<!-- END SERVICE TABS -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const tabs = document.querySelectorAll('.service-tabs .tab');
+  const indicator = document.getElementById('tabIndicator');
+  const tabBar = document.getElementById('serviceTabs');
+
+  function moveIndicator(tab) {
+    const tabRect = tab.getBoundingClientRect();
+    const barRect = tabBar.getBoundingClientRect();
+    indicator.style.width = tabRect.width + 'px';
+    indicator.style.left = (tabRect.left - barRect.left) + 'px';
+  }
+
+  // Initial position
+  const activeTab = document.querySelector('.service-tabs .tab.active');
+  if (activeTab) moveIndicator(activeTab);
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', function() {
+      document.querySelector('.service-tabs .tab.active').classList.remove('active');
+      tab.classList.add('active');
+      moveIndicator(tab);
+      // Optionally: switch content here
+    });
+  });
+
+  // Responsive: update indicator on window resize
+  window.addEventListener('resize', function() {
+    const current = document.querySelector('.service-tabs .tab.active');
+    if (current) moveIndicator(current);
+  });
+});
+</script>
+
+<!-- HERO SECTION -->
+<div class="service-hero-centered">
+  <h1>Professional Bee Removal</h1>
+  <p>
+    Safe, humane, and effective bee removal services. We relocate bees without harming them, protecting both your property and these vital pollinators.
+  </p>
+  <div class="service-hero-img-centered">
+    <img src="{% static 'images/Bee_on_flower.png' %}" alt="Bee on flower" />
+  </div>
+</div>
+
+<!-- HIGHLIGHTS SECTION -->
+<div class="service-highlights">
+  <div class="highlight-card">
+    <span class="highlight-icon-wrap">
+      <img src="{% static 'images/Clock.png' %}" alt="24/7 Emergency" class="highlight-icon-img">
+    </span>
+    <h3>24/7 Emergency</h3>
+    <p>Available around the clock for urgent situations</p>
+  </div>
+  <div class="highlight-card">
+    <span class="highlight-icon-wrap">
+      <img src="{% static 'images/Shield.png' %}" alt="Fully Insured" class="highlight-icon-img">
+    </span>
+    <h3>Fully Insured</h3>
+    <p>Insured for your peace of mind</p>
+  </div>
+  <div class="highlight-card">
+    <span class="highlight-icon-wrap">
+      <img src="{% static 'images/Check.png' %}" alt="Humane Methods" class="highlight-icon-img">
+    </span>
+    <h3>Humane Methods</h3>
+    <p>Bees are safely relocated, not exterminated</p>
+  </div>
+  <div class="highlight-card">
+    <span class="highlight-icon-wrap">
+      <img src="{% static 'images/Award.png' %}" alt="8+ Years Experience" class="highlight-icon-img">
+    </span>
+    <h3>8+ Years Experience</h3>
+    <p>Trusted expertise in bee management</p>
+  </div>
+</div>
+
+<!-- REMOVAL PROCESS -->
+<div class="removal-process">
+  <h2>Our Removal Process</h2>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-number">1</div>
+      <h4>Inspection</h4>
+      <p>
+        We assess the hive location, size, and best removal method for your
+        specific situation.
+      </p>
+    </div>
+    <div class="process-step">
+      <div class="step-number">2</div>
+      <h4>Free Estimate</h4>
+      <p>
+        We provide a transparent, no-obligation quote outlining the scope of
+        work and guaranteed pricing.
+      </p>
+    </div>
+    <div class="process-step">
+      <div class="step-number">3</div>
+      <h4>Safe Removal</h4>
+      <p>
+        Using specialized equipment, we carefully remove the bees and relocate
+        them to a safe environment.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- REMOVAL SERVICES CARD -->
+<div class="removal-services">
+  <h2>Removal Services</h2>
+  <div class="removal-services-card">
+    <h3>Bee Removal Services</h3>
+    <h4>On Request</h4>
+    <ul>
+      <li><span class="check-icon">&#10003;</span> Safe, humane bee relocation</li>
+      <li><span class="check-icon">&#10003;</span> 24/7 emergency service available</li>
+      <li><span class="check-icon">&#10003;</span> All locations and hive sizes</li>
+      <li><span class="check-icon">&#10003;</span> Free estimates</li>
+    </ul>
+  </div>
+</div>
+
+<!-- CONTACT SECTION (BOTTOM) -->
+<div class="service-contact">
+  <h2>Need Immediate Bee Removal?</h2>
+  <p>Call us now for a free quote and same-day service</p>
+  <div class="contact-actions">
+    <a class="call-btn" href="tel:985-612-0241" style="display: flex; align-items: center; gap: 10px;">
+      <svg class="footer-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="width: 1.7em; height: 1.7em;">
+        <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.4 2.1L8 9.8a16 16 0 0 0 6.2 6.2l1.4-1.3a2 2 0 0 1 2.1-.4c.8.3 1.7.6 2.6.7A2 2 0 0 1 22 16.9z"></path>
+      </svg>
+      985-612-0241
+    </a>
+    <a class="msg-btn" href="/contact">Send Us a Message</a>
+  </div>
+</div>
 {% endblock %}
