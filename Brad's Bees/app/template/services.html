@@ -6,13 +6,48 @@
 {% endblock %}
 {% block content %}
 
+
 <!-- SERVICE TABS -->
-<div class="service-tabs">
-  <button class="tab active">Bee Removal</button>
-  <button class="tab">Pollination Service</button>
-  <button class="tab">Hive Setup &amp; Management</button>
+<div class="service-tabs" id="serviceTabs">
+  <div class="tab-indicator" id="tabIndicator"></div>
+  <button class="tab active" data-tab="removal">Bee Removal</button>
+  <button class="tab" data-tab="pollination">Pollination Service</button>
+  <button class="tab" data-tab="setup">Hive Setup &amp; Management</button>
 </div>
 <!-- END SERVICE TABS -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const tabs = document.querySelectorAll('.service-tabs .tab');
+  const indicator = document.getElementById('tabIndicator');
+  const tabBar = document.getElementById('serviceTabs');
+
+  function moveIndicator(tab) {
+    const tabRect = tab.getBoundingClientRect();
+    const barRect = tabBar.getBoundingClientRect();
+    indicator.style.width = tabRect.width + 'px';
+    indicator.style.left = (tabRect.left - barRect.left) + 'px';
+  }
+
+  // Initial position
+  const activeTab = document.querySelector('.service-tabs .tab.active');
+  if (activeTab) moveIndicator(activeTab);
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', function() {
+      document.querySelector('.service-tabs .tab.active').classList.remove('active');
+      tab.classList.add('active');
+      moveIndicator(tab);
+      // Optionally: switch content here
+    });
+  });
+
+  // Responsive: update indicator on window resize
+  window.addEventListener('resize', function() {
+    const current = document.querySelector('.service-tabs .tab.active');
+    if (current) moveIndicator(current);
+  });
+});
+</script>
 
 <!-- HERO SECTION -->
 <div class="service-hero-centered">

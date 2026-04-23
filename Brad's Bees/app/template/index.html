@@ -8,6 +8,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
   <!-- ======================================================
        Document Title (overridable in child templates)
        ====================================================== -->
@@ -17,6 +18,13 @@
        Global Styles + Optional Page-Specific Styles
        ====================================================== -->
   <link rel="stylesheet" href="{% static 'index.css' %}">
+  <!-- ======================================================
+       Favicon Styles
+       ====================================================== -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
   {% block css %}{% endblock %}
 </head>
 <body>
@@ -131,7 +139,7 @@
       </div>
 
       <h4 class="footer-community-title">Community Links</h4>
-      <p>Hives for Heroes</p>
+      <p class="hives_for_heros"><a href="https://hivesforheroes.org/pages/support" target="_blank" >Hives for Heroes</a></p>
     </div>
 
     <!-- Footer: Copyright -->

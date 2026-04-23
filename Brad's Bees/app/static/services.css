@@ -1,3 +1,25 @@
+.service-tabs {
+    position: relative;
+}
+
+.tab-indicator {
+    position: absolute;
+    top: 8px;
+    left: 0;
+    height: calc(100% - 16px);
+    width: 0;
+    background: #181c26;
+    border-radius: 12px;
+    z-index: 0;
+    transition: left 0.3s cubic-bezier(0.4,0,0.2,1), width 0.3s cubic-bezier(0.4,0,0.2,1);
+    pointer-events: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.service-tabs .tab {
+    position: relative;
+    z-index: 1;
+}
 body {
     font-family: 'Montserrat', Arial, sans-serif;
     background: #fffbe9;
@@ -10,12 +32,13 @@ body {
   background: #f6f7fa;
   border-radius: 18px;
   margin: 32px auto 0 auto;
-  max-width: 700px;
+  max-width: 805px;
   padding: 8px 0;
   justify-content: center;
 }
 
-.service-tabs .tab {
+.service-tabs .tab,
+.service-tabs .tab.active {
   background: none;
   border: none;
   outline: none;
@@ -25,13 +48,13 @@ body {
   border-radius: 12px;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
+  box-shadow: none;
 }
 
 .service-tabs .tab.active {
-  background: #181c26;
+  background: transparent;
   color: #fff;
   font-weight: 600;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
 
 .service-tabs .tab:not(.active):hover {
@@ -163,7 +186,8 @@ body {
     background: #181d26;
     color: #fff;
     border-radius: 1.5rem;
-    margin: 2rem 0;
+    margin: 2rem 5.9rem;
+    max-width: 95%;
     padding: 2.5rem 1rem 2rem 1rem;
     text-align: center;
 }
@@ -171,7 +195,7 @@ body {
     background: #232a36;
     border-radius: 1rem;
     margin: 0 auto;
-    max-width: 600px;
+    max-width: 800px;
     padding: 2rem 1.5rem;
     box-shadow: 0 2px 16px #0002;
 }

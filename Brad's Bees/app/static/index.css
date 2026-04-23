@@ -1,3 +1,126 @@
+.removal-services-card ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-left: 0;
+  list-style: none;
+  gap: 10px;
+}
+
+.removal-services-card li {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+/* ===================== Service Highlights & Process ===================== */
+.service-highlights {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 40px 0 0 0;
+  background: #fdfbee;
+  padding: 40px 0 0 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.highlight-card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+  padding: 32px 36px 24px 36px;
+  min-width: 320px;
+  max-width: 435px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.highlight-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #d9850022;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  margin-bottom: 18px;
+}
+
+.highlight-icon-img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+
+.removal-process {
+  background: #fdfbee;
+  border-radius: 24px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+  margin: 40px auto 0 auto !important;
+  padding: 48px 0 32px 0;
+  max-width: 90vw;
+}
+
+.removal-process h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #101b34;
+  margin-bottom: 36px;
+}
+
+.process-steps {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-top: 0;
+}
+
+.process-step {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+  padding: 36px 28px 28px 28px;
+  min-width: 320px;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.step-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #d98500;
+  margin-bottom: 10px;
+}
+
+.process-step h4 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #101b34;
+  margin-bottom: 10px;
+}
+
+.process-step p {
+  color: #535d6f;
+  text-align: center;
+  font-size: 1.05rem;
+}
+
+@media (max-width: 900px) {
+  .service-highlights,
+  .process-steps {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+}
 /* =========================================================
     Design Tokens
    ========================================================= */
@@ -108,15 +231,19 @@ main {
   box-shadow: 0 0 0 1px rgb(255 255 255 / 0.12);
 }
 
+
 @keyframes confetti-fall {
-  0% {
-    transform: translateY(-10px) translateX(0) rotate(0deg) scale(1);
-    opacity: 1;
-  }
   100% {
     transform: translateY(360px) translateX(var(--drift, 0px)) rotate(var(--spin, 900deg)) scale(0.85);
     opacity: 0;
   }
+}
+
+/* Underline all links and contact info on hover */
+a:hover,
+.footer-contact-row a:hover,
+.main-nav a:hover {
+  text-decoration: underline;
 }
 
 @keyframes message-fade {
@@ -313,6 +440,9 @@ footer > p:last-child {
   padding-top: 10px;
   border-top: 1px solid rgba(255, 255, 255, 0.07);
   text-align: center;
+}
+.hives_for_heros:hover{
+  text-decoration: underline;
 }
 
 /* =========================================================
