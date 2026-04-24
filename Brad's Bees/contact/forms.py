@@ -13,11 +13,27 @@ phone_validator = RegexValidator(
     message='Phone number must be in the format XXX-XXX-XXXX.'
 )
 
+###
+class MultipleFileInput(forms.ClearableFileInput):
+    allow_multiple_selected = True
+
+class MultipleFileField(forms.FileField):
+    def __init__(self, *args, **kwargs):
+        kwargs.setdefault("widget", MultipleFileInput())
+        super().__init__(*args, **kwargs)
+
+    def clean(self, data, initial=None):
+        if isinstance(data, (list, tuple)):
+            return [super().clean(d, initial) for d in data]
+        return super().clean(data, initial)
+###
+
 class SubmissionForm(forms.ModelForm):
-    images = forms.ImageField(
-        required=False,
-        widget=forms.ClearableFileInput(attrs={'multiple': True})
-    )
+    images = MultipleFileField(required = False)
+    # images = forms.FileField(
+    #     required=False,
+    #     widget=forms.FileInput(attrs={'multiple': True})
+    # )
 
     class Meta:
         model = Submission
