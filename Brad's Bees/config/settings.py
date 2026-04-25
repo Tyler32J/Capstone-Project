@@ -140,3 +140,15 @@ DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', EMAIL_HOST_USER).strip()
 ORDER_NOTIFICATION_EMAIL = os.getenv('ORDER_NOTIFICATION_EMAIL', EMAIL_HOST_USER).strip()
 RECAPTCHA_SECRET_KEY = os.getenv('RECAPTCHA_SECRET_KEY', '').strip()
 
+### contact fixes
+ALLOWED_HOSTS = [
+    "brads-bees-production.up.railway.app",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://brads-bees-production.up.railway.app",
+]
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+
