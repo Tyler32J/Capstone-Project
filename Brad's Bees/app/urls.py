@@ -1,4 +1,6 @@
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [
@@ -8,3 +10,6 @@ urlpatterns = [
     path('gallery/', views.render_gallery, name="gallery"),
     path('removal/', views.bee_removal, name="removal"),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

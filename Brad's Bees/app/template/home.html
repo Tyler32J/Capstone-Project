@@ -189,43 +189,75 @@
       <!-- Contact form -->
       <div class="contact-form-wrapper">
         <h3 class="contact-form-title">Send Us a Message</h3>
-        <form method="post" action="{% url 'contact' %}">
-          {% csrf_token %}
+              <form method="post" enctype="multipart/form-data" class="contact-form">
+                {% csrf_token %}
 
-          <div class="form-group">
-            <label class="form-label" for="name">Name</label>
-            <input class="form-input" type="text" id="name" name="name" placeholder="Your name">
-          </div>
+                {% if messages %}
+                  {% for message in messages %}
+                    <div id="success-message" class="success-message">
+                      {{ message }}
+                    </div>
+                  {% endfor %}
+                {% endif %}
 
-          <div class="form-group">
-            <label class="form-label" for="email">Email</label>
-            <input class="form-input" type="email" id="email" name="email" placeholder="Your Email">
-          </div>
+                <!-- Name -->
+                <div class="form-group">
+                  <label class="form-label" for="{{ form.name.id_for_label }}">Name</label>
+                  {{ form.name }}
+                  {% for error in form.name.errors %}
+                    <div class="error-text">{{ error }}</div>
+                  {% endfor %}
+                </div>
 
-          <div class="form-group">
-            <label class="form-label" for="phone">Phone</label>
-            <input class="form-input" type="tel" id="phone" name="phone" placeholder="XXX-XXX-XXXX">
-          </div>
+                <!-- Email -->
+                <div class="form-group">
+                  <label class="form-label" for="{{ form.email.id_for_label }}">Email</label>
+                  {{ form.email }}
+                  {% for error in form.email.errors %}
+                    <div class="error-text">{{ error }}</div>
+                  {% endfor %}
+                </div>
 
-          <div class="form-group">
-            <label class="form-label" for="service">Service Needed</label>
-            <select class="form-select" id="service" name="service">
-              <option>Bee Removal</option>
-              <option>Pollination Service</option>
-              <option>Education Service</option>
-              <option>Hive Set-Up</option>
-            </select>
-          </div>
+                <!-- Phone -->
+                <div class="form-group">
+                  <label class="form-label" for="{{ form.phone.id_for_label }}">Phone</label>
+                  {{ form.phone }}
+                  {% for error in form.phone.errors %}
+                    <div class="error-text">{{ error }}</div>
+                  {% endfor %}
+                </div>
 
-          <div class="form-group">
-            <label class="form-label" for="message">Message</label>
-            <textarea class="form-textarea" id="message" name="message" rows="4" placeholder="Tell us about your needs..."></textarea>
-          </div>
+                <!-- Service -->
+                <div class="form-group">
+                  <label class="form-label" for="{{ form.service.id_for_label }}">Service Needed</label>
+                  {{ form.service }}
+                  {% for error in form.service.errors %}
+                    <div class="error-text">{{ error }}</div>
+                  {% endfor %}
+                </div>
 
-          <button type="submit" class="submit-button">Send Message</button>
-        </form>
+                <!-- Message -->
+                <div class="form-group">
+                  <label class="form-label" for="{{ form.message.id_for_label }}">Message</label>
+                  {{ form.message }}
+                  {% for error in form.message.errors %}
+                    <div class="error-text">{{ error }}</div>
+                  {% endfor %}
+                </div>
+
+                <!-- Images -->
+                <div class="form-group">
+                  <label class="form-label" for="{{ form.images.id_for_label }}">Upload Images</label>
+                  {{ form.images }}
+                  {% for error in form.images.errors %}
+                    <div class="error-text">{{ error }}</div>
+                  {% endfor %}
+                </div>
+
+                <button class="submit-button" type="submit">Send Message</button>
+              </form>
+
       </div>
-
       <!-- Contact info cards -->
       <div class="contact-info-wrapper">
         <div class="contact-image-wrapper">
@@ -271,4 +303,24 @@
     </div>
   </div>
 </section>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const successMessage = document.getElementById("success-message");
+
+    if (successMessage) {
+      confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+
+      setTimeout(() => {
+        successMessage.style.opacity = "0";
+        successMessage.style.transition = "opacity 0.5s ease";
+      }, 4000);
+    }
+  });
+</script>
 {% endblock %}
