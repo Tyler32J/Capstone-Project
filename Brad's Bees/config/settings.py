@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-v_8r(qj@iku8q#w37tfo*3c-kxndlqvx+q88=uy-2_u-29zl!t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['brads-bees-production.up.railway.app']
 
 
 # Application definition
