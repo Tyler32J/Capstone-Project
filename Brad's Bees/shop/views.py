@@ -295,7 +295,7 @@ def checkout_view(request):
             request.session.modified = True
             messages.success(
                 request,
-                "Thank you for your Order! We will receive a message/email in the following 24 hours.",
+                "Thank you for your Order! You will receive a message/email in the following 24 hours.",
             )
             if email_status == "not_configured":
                 messages.warning(
