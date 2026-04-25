@@ -4,3 +4,4 @@ python-dotenv
 python-decouple
 dj-database-url
 Pillow
+whitenoise
