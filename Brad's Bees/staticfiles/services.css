@@ -1,0 +1,469 @@
+/* ===== BASE STYLES ===== */
+body {
+    font-family: 'Montserrat', Arial, sans-serif;
+    background: #fffbe9;
+}
+
+/* ===== SERVICE TABS ===== */
+.service-tabs {
+    position: relative;
+    display: flex;
+    gap: 0;
+    background: #f6f7fa;
+    border-radius: 18px;
+    margin: 32px auto 0 auto;
+    max-width: 700px;
+    padding: 8px 8px;
+    justify-content: center;
+}
+
+.tab-indicator {
+    position: absolute;
+    top: 8px;
+    left: 0;
+    height: calc(100% - 16px);
+    width: 0;
+    background: #181c26;
+    border-radius: 12px;
+    z-index: 0;
+    transition: left 0.3s cubic-bezier(0.4,0,0.2,1), width 0.3s cubic-bezier(0.4,0,0.2,1);
+    pointer-events: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.service-tabs .tab {
+    position: relative;
+    z-index: 1;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 1.1rem;
+    color: #444;
+    padding: 14px 28px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    box-shadow: none;
+    font-weight: 500;
+}
+
+.service-tabs .tab.active {
+    background: transparent;
+    color: #fff;
+    font-weight: 600;
+}
+
+.service-tabs .tab:not(.active):hover {
+    background: #ececec;
+}
+
+/* ===== SERVICE CONTENT CONTAINER ===== */
+.service-content {
+    display: none;
+    opacity: 0;
+    transition: opacity .35s ease;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.service-content.active {
+    display: block;
+    opacity: 1;
+}
+
+/* ===== HERO SECTION (ALL SERVICES) ===== */
+.service-hero-centered {
+    background: #fffbe9;
+    text-align: center;
+    padding: 3rem 0 2.5rem 0;
+    margin-bottom: 2.5rem;
+}
+
+.service-hero-centered h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #181d26;
+}
+
+.service-hero-centered p {
+    font-size: 1.15rem;
+    color: #555;
+    max-width: 680px;
+    margin: 0 auto 2.5rem auto;
+    line-height: 1.6;
+}
+
+.service-hero-img-centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.service-hero-img-centered img {
+    width: 100%;
+    max-width: 650px;
+    border-radius: 1rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    background: #fff;
+}
+
+/* ===== HIGHLIGHT/FEATURE CARDS (4-COLUMN GRID) ===== */
+.service-highlights,
+.pollination-features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin: 0 auto 2.5rem auto;
+    max-width: 1100px;
+}
+
+.highlight-card,
+.pollination-feature-card {
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 2rem 1.2rem 1.8rem 1.2rem;
+    text-align: center;
+}
+
+.highlight-icon-wrap,
+.feature-icon-wrap {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #d98500;
+    margin: 0 auto 1rem auto;
+    overflow: hidden;
+}
+
+.highlight-icon-img,
+.feature-icon-wrap img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
+.highlight-card h3,
+.pollination-feature-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    color: #181d26;
+}
+
+.highlight-card p,
+.pollination-feature-card p {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* ===== PROCESS SECTION (BEE REMOVAL) ===== */
+.removal-process {
+    background: #fff;
+    border-radius: 1.25rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin: 2rem auto 2.5rem auto !important;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    max-width: 1100px;
+}
+
+.removal-process h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #181d26;
+}
+
+.process-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.process-step {
+    text-align: center;
+}
+
+.step-number {
+    font-size: 2.2rem;
+    color: #d98500;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.process-step h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #181d26;
+}
+
+.process-step p {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* ===== DARK CARD SECTIONS (Services/Packages) ===== */
+.removal-services,
+.pollination-packages  {
+    background: #181d26;
+    color: #fff;
+    border-radius: 1.25rem;
+    margin: 0 auto 2.5rem auto;
+    max-width: 1100px !important;
+    padding: 2.5rem 2rem !important;
+    text-align: center !important;
+}
+
+.removal-services h2,
+.pollination-packages h2 {
+    font-size: 1.8rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 1.5rem !important;
+}
+
+.removal-services-card,
+.package-card {
+    background: #252c3a;
+    border-radius: 1rem;
+    margin: 0 auto;
+    max-width: 500px;
+    padding: 2rem 2.5rem;
+}
+
+.removal-services-card h3,
+.package-card h3 {
+    color: #d98500;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.removal-services-card h4,
+.package-card h4 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #fff;
+}
+
+.removal-services-card ul,
+.package-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.removal-services-card li,
+.package-card li {
+    text-align: left;
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+    color: #ccc;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.check-icon,
+.package-card li::before {
+    color: #d98500;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+/* ===== CROPS SECTION (POLLINATION) ===== */
+.pollination-crops {
+    background: #fff;
+    padding: 2.5rem 2rem;
+    border-radius: 1.25rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin: 0 auto 2.5rem auto;
+    max-width: 1100px;
+    text-align: center;
+}
+
+.pollination-crops h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #181d26;
+}
+
+.pollination-crops > p {
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.crop-columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    text-align: left;
+}
+
+.crop-col h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #d98500;
+}
+
+.crop-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.crop-col li {
+    font-size: 1rem;
+    margin-bottom: 0.6rem;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.crop-note {
+    margin-top: 2rem;
+    font-size: 1rem;
+    color: #666;
+}
+
+.crop-note strong {
+    color: #d98500;
+    cursor: pointer;
+}
+
+/* ===== CONTACT/CTA SECTION ===== */
+.service-contact {
+    background: #fffbe9;
+    margin: 0 auto 3rem auto;
+    padding: 2.5rem 1rem;
+    text-align: center;
+    max-width: 1100px;
+}
+
+.service-contact h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #181d26;
+}
+
+.service-contact p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: #555;
+}
+
+.contact-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.call-btn,
+.msg-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    border-radius: 0.6rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    border: none;
+    cursor: pointer;
+    gap: 0.5rem;
+}
+
+.call-btn {
+    color: #fff;
+    background: #d98500;
+}
+
+.call-btn:hover {
+    background: #c17600;
+}
+
+.msg-btn {
+    background: #181d26;
+    color: #fff;
+}
+
+.msg-btn:hover {
+    background: #2a3140;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1000px) {
+    .service-highlights,
+    .pollination-features {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .process-steps {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .crop-columns {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .crop-col ul {
+        display: inline-block;
+        text-align: left;
+    }
+}
+
+@media (max-width: 700px) {
+    .service-tabs {
+        flex-direction: column;
+        gap: 4px;
+        padding: 8px;
+        max-width: 90%;
+    }
+    
+    .service-tabs .tab {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+    
+    .service-content {
+        padding: 0 1rem;
+    }
+    
+    .service-hero-centered h1 {
+        font-size: 2rem;
+    }
+    
+    .service-highlights,
+    .pollination-features {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-actions {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    
+    .call-btn,
+    .msg-btn {
+        width: 100%;
+    }
+}

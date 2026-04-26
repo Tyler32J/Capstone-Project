@@ -1,0 +1,135 @@
+:root {
+  --surface: #ffffff;
+  --text: #101b34;
+  --gold: #d98500;
+  --gold-dark: #b86a00;
+  --navy: #0a1530;
+  --navy-soft: #122244;
+  --line: #2b3b60;
+  --muted: #b8c4de;
+}
+
+.contact-section {
+  background: linear-gradient(180deg, #f7f9fc 0%, #eef2f8 100%);
+  padding: 56px 20px;
+}
+
+.contact-card {
+  max-width: 760px;
+  margin: 0 auto;
+  background: linear-gradient(160deg, var(--navy) 0%, #081127 100%);
+  border: 1px solid #1b2a4d;
+  border-radius: 18px;
+  box-shadow: 0 20px 40px rgba(10, 21, 48, 0.28);
+  padding: 32px;
+}
+
+.contact-card h2 {
+  margin: 0 0 8px;
+  color: #fff;
+  font-size: clamp(1.8rem, 3vw, 2.25rem);
+}
+
+.contact-card > p {
+  margin: 0 0 24px;
+  color: var(--muted);
+}
+
+.contact-form {
+  display: grid;
+  gap: 16px;
+}
+
+.form-group {
+  display: grid;
+  gap: 8px;
+}
+
+.form-group label {
+  color: #f4f7ff;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--navy-soft);
+  color: #fff;
+  font: inherit;
+  padding: 14px 16px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #9fb0d0;
+}
+
+.form-group textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(217, 133, 0, 0.28);
+}
+
+#id_images::file-selector-button {
+  border: 0;
+  border-radius: 10px;
+  background: #1e315c;
+  color: #fff;
+  padding: 8px 12px;
+  margin-right: 12px;
+  cursor: pointer;
+}
+
+.submit-button {
+  margin-top: 8px;
+  border: 0;
+  border-radius: 14px;
+  padding: 14px 18px;
+  background: var(--gold);
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.06s ease;
+}
+
+.submit-button:hover {
+  background: var(--gold-dark);
+}
+
+.submit-button:active {
+  transform: translateY(1px);
+}
+
+.error-list {
+  color: red;
+  /* more stuff if needed */
+}
+
+.message-list {
+  color: green;
+  /* more stuff if needed */
+}
+
+@media (max-width: 640px) {
+  .contact-section {
+    padding: 32px 14px;
+  }
+
+  .contact-card {
+    padding: 20px;
+    border-radius: 14px;
+  }
+}
