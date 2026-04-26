@@ -45,7 +45,11 @@ def contact_view(request):
             for f in request.FILES.getlist('images'):
                 email.attach(f.name, f.read(), f.content_type)
 
-            email.send()
+            try:
+                email.send()
+            except Exception as e:
+                print(f"Email send failed: {e}")
+            # email.send()
 
             messages.success(request, "Form submitted successfully!")
 
