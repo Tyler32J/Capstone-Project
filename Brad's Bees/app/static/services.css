@@ -143,10 +143,19 @@ body {
 
 .highlight-icon-img,
 .feature-icon-wrap img {
-    width: 32px;
+    width: 32px ;
     height: 32px;
     object-fit: contain;
     filter: brightness(0) invert(1);
+}
+
+.highlight-icon-img,
+.feature-icon-wrap img {
+    transform: scale(3); 
+    transition: transform 0.2s;
+    overflow: visible;
+    display: block;
+    margin: 0 auto;
 }
 
 .highlight-card h3,
@@ -230,6 +239,19 @@ body {
     font-weight: 700 !important;
     margin-bottom: 1.5rem !important;
 }
+/* Center the pollination-packages ul and its contents */
+.pollination-packages ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    list-style-position: inside;
+    padding-left: 0;
+}
+
+.pollination-packages ul li {
+    text-align: center;
+}
 
 .removal-services-card,
 .package-card {
@@ -238,6 +260,7 @@ body {
     margin: 0 auto;
     max-width: 500px;
     padding: 2rem 2.5rem;
+    
 }
 
 .removal-services-card h3,
@@ -274,6 +297,8 @@ body {
     display: flex;
     align-items: center;
     gap: 0.6rem;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: 400;
 }
 
 .check-icon,
@@ -307,10 +332,12 @@ body {
 }
 
 .crop-columns {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 10rem;
     text-align: left;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .crop-col h3 {
