@@ -40,9 +40,9 @@ His mission is to protect bees, support agriculture, and provide safe, humane so
 ## 👥 Credits
 
 **Development Team**
-- **Tyler** — Lead Developer / Team Lead  
-- **Russ** — Collaborator  
-- **Randy** — Collaborator  
+- **Tyler Farrell** — Lead Developer / Team Lead  
+- **Russ Sossaman** — Collaborator  
+- **Randy Russell** — Collaborator  
 
 **Client**
 - **Brad** — Owner of Brad’s Bees  
