@@ -47,7 +47,8 @@ His mission is to protect bees, support agriculture, and provide safe, humane so
 **Client**
 - **Brad** — Owner of Brad’s Bees  
 
----
+---Project Status:  
+School project completed. Ongoing updates are maintained by Tyler Farrell for the client.
 
 ## 🔒 Access & Permissions
 This repository is provided in **read‑only mode** for client review and presentation.  
